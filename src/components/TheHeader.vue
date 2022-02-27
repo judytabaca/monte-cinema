@@ -1,12 +1,12 @@
 <template>
-  <header class="header-container">
+  <header class="header__container">
     <div class="logo">
-      <img src="../../img/logo.svg" />
+      <img src="@/assets/img/logo.svg" />
     </div>
-    <div class="header-buttons">
-      <button class="button button-secondary">Register</button>
-      <button class="button button-primary">Login</button>
-      <div class="menu-toggle">
+    <div class="header__buttons">
+      <MainButton button-text="Register" button-type="secondary" />
+      <MainButton button-text="Login" button-type="primary" />
+      <div class="menu__toggle">
         <div>
           <div class="line"></div>
           <div class="line"></div>
@@ -18,58 +18,62 @@
 </template>
 
 <script>
-// import logo from "../../img/logo.svg";
+import MainButton from "./MainButton.vue";
+
 export default {
   name: "TheHeader",
+  components: {
+    MainButton,
+  },
 };
 </script>
 
-<style>
-.header-container {
+<style scoped lang="scss">
+.header__container {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0px;
-}
 
-.header-buttons {
-  display: flex;
-  font-size: 16px;
-  line-height: 100%;
-  letter-spacing: 0.015em;
-}
+  .header__buttons {
+    display: flex;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0.015em;
 
-.header-buttons > .button {
-  margin-left: 1em;
-}
+    .button {
+      margin-left: 1em;
+    }
 
-.menu-toggle {
-  height: 100%;
-  width: 60px;
-  cursor: pointer;
-  display: none;
-  justify-content: center;
-  align-self: center;
-}
+    .menu__toggle {
+      height: 100%;
+      width: 60px;
+      cursor: pointer;
+      display: none;
+      justify-content: center;
+      align-self: center;
+    }
 
-.menu-toggle .line {
-  width: 32px;
-  height: 3px;
-  background-color: #5d5d67;
-  margin-bottom: 5px;
+    .menu__toggle .line {
+      width: 32px;
+      height: 3px;
+      background-color: $tuna;
+      margin-bottom: 5px;
+    }
+  }
 }
 
 @media only screen and (max-width: 450px) {
-  .header-container {
+  .header__container {
     padding: 15px 25px;
   }
 
-  .menu-toggle {
+  .menu__toggle {
     display: flex;
   }
 
-  .header-buttons > .button {
+  .header__buttons .button {
     display: none;
   }
 }

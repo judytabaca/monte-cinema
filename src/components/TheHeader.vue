@@ -53,13 +53,13 @@ export default {
       display: none;
       justify-content: center;
       align-self: center;
-    }
 
-    .menu__toggle .line {
-      width: 32px;
-      height: 3px;
-      background-color: $tuna;
-      margin-bottom: 5px;
+      .line {
+        width: 32px;
+        height: 3px;
+        background-color: $tuna;
+        margin-bottom: 5px;
+      }
     }
   }
 }

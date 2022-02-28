@@ -40,34 +40,34 @@ export default {
 .coming-soon_wrapper {
   width: 100%;
   margin: 1% 0%;
-}
 
-.headings {
-  display: flex;
-  justify-content: space-between;
-  margin: 60px 0px 30px 0px;
-}
+  .headings {
+    display: flex;
+    justify-content: space-between;
+    margin: 60px 0px 30px 0px;
 
-.headings > h3 {
-  font-family: "Roboto Mono", monospace;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 170%;
-  color: $tuna;
-  letter-spacing: 0.015em;
-}
+    h3 {
+      font-family: "Roboto Mono", monospace;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 170%;
+      color: $tuna;
+      letter-spacing: 0.015em;
 
-.headings > h3:nth-of-type(2) {
-  display: none;
-}
+      &:nth-of-type(2) {
+        display: none;
+      }
 
-.headings > h3:nth-of-type(3) {
-  color: $cherry-red;
-}
+      &:nth-of-type(3) {
+        color: $cherry-red;
+      }
+    }
+  }
 
-.soon-movies_wrapper {
-  display: flex;
-  justify-content: space-between;
+  .soon-movies_wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 450px) {

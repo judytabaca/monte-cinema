@@ -52,14 +52,16 @@ export default {
     background-color: $snow-white;
   }
 
-  &__primary:hover {
-    background-color: $totem-pole;
-    border: 5px solid $totem-pole;
-  }
+  &__primary {
+    &:hover {
+      background-color: $totem-pole;
+      border: 5px solid $totem-pole;
+    }
 
-  &__primary:focus {
-    background-color: $totem-pole;
-    border: 5px solid $bittersweet;
+    &:focus {
+      background-color: $totem-pole;
+      border: 5px solid $bittersweet;
+    }
   }
 }
 </style>

@@ -1,11 +1,11 @@
 <template>
-  <header class="header__container">
+  <header class="header">
     <div class="logo">
       <img src="@/assets/img/logo.svg" />
     </div>
     <div class="header__buttons">
-      <MainButton button-text="Register" button-type="secondary" />
-      <MainButton button-text="Login" button-type="primary" />
+      <MainButton button-type="secondary">Register</MainButton>
+      <MainButton button-type="primary">Login</MainButton>
       <div class="menu__toggle">
         <div>
           <div class="line"></div>
@@ -29,7 +29,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.header__container {
+.header {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -65,7 +65,7 @@ export default {
 }
 
 @media only screen and (max-width: 450px) {
-  .header__container {
+  .header {
     padding: 15px 25px;
   }
 

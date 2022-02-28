@@ -1,29 +1,32 @@
 <template>
-  <div class="welcome__container">
+  <div class="welcome">
     <div class="welcome__text">
       <h1>Welcome to the best cinema in Monterail</h1>
       <p>
         Best movies, best experiences, best people. And all that doesn't exist.
         Yikes.
       </p>
-      <a class="button button-primary" href="#online-booking">
-        Book a ticket
-      </a>
+      <MainButton button-type="primary">Book a ticket</MainButton>
     </div>
-    <div class="welcome__img--container">
+    <div class="welcome-img__container">
       <img src="@/assets/img/welcome.jpg" />
     </div>
   </div>
 </template>
 
 <script>
+import MainButton from "./MainButton.vue";
+
 export default {
   name: "WelcomeCard",
+  components: {
+    MainButton,
+  },
 };
 </script>
 
 <style scoped lang="scss">
-.welcome__container {
+.welcome {
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -31,7 +34,7 @@ export default {
   background-color: $wisp-pink;
 
   .welcome__text,
-  .welcome__img--container {
+  .welcome-img__container {
     width: 50%;
     aspect-ratio: 1;
 
@@ -79,35 +82,45 @@ export default {
       font-family: "Roboto Mono", monospace;
       margin: 3% 0%;
     }
+
+    .button {
+      max-width: 50%;
+    }
   }
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 450px) {
-  .welcome__img--container {
-    display: none;
-  }
+  .welcome {
+    .welcome-img__container {
+      display: none;
+    }
 
-  .welcome__text {
-    width: 100%;
-    align-items: center;
-    text-align: center;
-    aspect-ratio: auto;
+    .welcome__text {
+      width: 80%;
+      align-items: flex-start;
+      text-align: start;
+      aspect-ratio: auto;
 
-    a {
-      align-self: center;
+      a {
+        align-self: center;
+      }
+
+      p {
+        width: 90%;
+      }
     }
   }
 }
 
 @media only screen and (max-width: 450px) {
-  .welcome__img--container {
+  .welcome-img__container {
     display: none;
   }
-
   .welcome__text {
     width: 100%;
     align-items: center;
     text-align: center;
+    justify-content: center;
     aspect-ratio: auto;
 
     a {
@@ -116,6 +129,12 @@ export default {
 
     h1 {
       font-size: 48px;
+    }
+
+    p {
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
     }
   }
 }

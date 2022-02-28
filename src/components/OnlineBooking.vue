@@ -14,7 +14,9 @@
         class="email__input"
         placeholder="e.g. mynameislaura@mail.com"
       />
-      <MainButton button-text="Let me know" button-type="primary" />
+      <MainButton button-text="Let me know" button-type="primary"
+        >Let me know</MainButton
+      >
     </div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonClasses">{{ buttonText }}</button>
+  <button :class="buttonClasses"><slot /></button>
 </template>
 
 <script>
@@ -19,8 +19,8 @@ export default {
     buttonClasses() {
       return [
         "button",
-        { button__primary: this.buttonType === "primary" },
-        { button__secondary: this.buttonType === "secondary" },
+        { "button--primary": this.buttonType === "primary" },
+        { "button--secondary": this.buttonType === "secondary" },
       ];
     },
   },
@@ -40,19 +40,19 @@ export default {
   flex-direction: column;
   text-decoration: none;
 
-  &__primary {
+  &--primary {
     color: $snow-white;
     border: 5px solid $cherry-red;
     background-color: $cherry-red;
   }
 
-  &__secondary {
+  &--secondary {
     color: $cherry-red;
     border: 5px solid $snow-white;
     background-color: $snow-white;
   }
 
-  &__primary {
+  &--primary {
     &:hover {
       background-color: $totem-pole;
       border: 5px solid $totem-pole;

@@ -24,4 +24,28 @@ export default {
 };
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+html {
+  scroll-behavior: smooth;
+}
+
+.app {
+  max-width: 1440px;
+  width: 95%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 450px) {
+  .app {
+    width: 95%;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .app {
+    width: 100%;
+    margin: auto;
+  }
+}
+</style>

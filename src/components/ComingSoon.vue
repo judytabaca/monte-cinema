@@ -1,11 +1,11 @@
 <template>
-  <div class="coming-soon_wrapper">
-    <div class="headings">
+  <div class="coming-soon">
+    <div class="coming-soon__headings">
       <h3>SOON IN THE CINEMA</h3>
       <h3>SOON</h3>
       <h3>SEE ALL</h3>
     </div>
-    <div class="soon-movies_wrapper">
+    <div class="coming-soon__wrapper">
       <MovieCard
         title="Predator"
         img="/src/assets/img/predator.png"
@@ -37,11 +37,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.coming-soon_wrapper {
+.coming-soon {
   width: 100%;
   margin: 1% 0%;
 
-  .headings {
+  &__headings {
     display: flex;
     justify-content: space-between;
     margin: 60px 0px 30px 0px;
@@ -64,39 +64,46 @@ export default {
     }
   }
 
-  .soon-movies_wrapper {
+  .coming-soon__wrapper {
     display: flex;
     justify-content: space-between;
   }
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 450px) {
-  .soon-movies_wrapper > div:nth-of-type(3) {
-    display: none;
-  }
+  .scoming-soon__wrapper {
+    div:nth-of-type(3) {
+      display: none;
+    }
 
-  .soon-movies_wrapper > div:nth-of-type(2) {
-    margin-left: 3%;
+    div:nth-of-type(2) {
+      margin-left: 3%;
+    }
   }
 }
 
 @media only screen and (max-width: 450px) {
-  .coming-soon_wrapper {
+  .cominng-soon__wrapper {
     width: 92%;
     margin: auto;
-  }
-
-  .headings > h3:nth-of-type(1) {
-    display: none;
-  }
-
-  .headings > h3:nth-of-type(2) {
-    display: inline-block;
-  }
-
-  .soon-movies_wrapper {
+    display: flex;
+    justify-content: space-between;
     flex-direction: column;
-    align-items: center;
+
+    &__headings {
+      h3:nth-of-type(1) {
+        display: none;
+      }
+
+      h3:nth-of-type(2) {
+        display: inline-block;
+      }
+    }
+
+    .coming-soon__wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
 </style>

@@ -31,6 +31,7 @@ const routes = [
     path: "/movie/:movieId",
     name: "MovieDetailsPage",
     component: MovieDetailsPage,
+    props: true,
   },
   {
     path: "/404",

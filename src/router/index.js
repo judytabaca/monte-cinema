@@ -1,5 +1,9 @@
 import VueRouter from "vue-router";
 import HomePage from "@/pages/HomePage.vue";
+import AllMovies from "@/pages/AllMoviesPage.vue";
+import ContactPage from "@/pages/ContactPage.vue";
+import MovieDetailsPage from "@/pages/MovieDetailsPage.vue";
+import ScreeningsPage from "@/pages/ScreeningsPage.vue";
 import NoPage from "@/pages/NoPage.vue";
 
 const routes = [
@@ -7,6 +11,26 @@ const routes = [
     path: "/",
     name: "Home",
     component: HomePage,
+  },
+  {
+    path: "/movies",
+    name: "AllMovies",
+    component: AllMovies,
+  },
+  {
+    path: "/contact",
+    name: "ContactPage",
+    component: ContactPage,
+  },
+  {
+    path: "/screenings",
+    name: "ScreeningsPage",
+    component: ScreeningsPage,
+  },
+  {
+    path: "/movie/:movieId",
+    name: "MovieDetailsPage",
+    component: MovieDetailsPage,
   },
   {
     path: "/404",

@@ -1,28 +1,51 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app">
+    <TheHeader />
+    <WelcomeCard />
+    <ComingSoon />
+    <OnlineBooking />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TheHeader from "./components/TheHeader.vue";
+import WelcomeCard from "./components/WelcomeCard.vue";
+import OnlineBooking from "./components/OnlineBooking.vue";
+import ComingSoon from "./components/ComingSoon.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    TheHeader,
+    WelcomeCard,
+    ComingSoon,
+    OnlineBooking,
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style scoped lang="scss">
+html {
+  scroll-behavior: smooth;
+}
+
+.app {
+  max-width: 1440px;
+  width: 95%;
+  margin: auto;
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 450px) {
+  .app {
+    width: 95%;
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .app {
+    width: 100%;
+    margin: auto;
+  }
 }
 </style>

@@ -4,6 +4,7 @@ import AllMovies from "@/pages/AllMoviesPage.vue";
 import ContactPage from "@/pages/ContactPage.vue";
 import MovieDetailsPage from "@/pages/MovieDetailsPage.vue";
 import ScreeningsPage from "@/pages/ScreeningsPage.vue";
+import RegisterPage from "@/pages/RegisterPage.vue";
 import NoPage from "@/pages/NoPage.vue";
 
 const routes = [
@@ -31,6 +32,12 @@ const routes = [
     path: "/movie/:movieId",
     name: "MovieDetailsPage",
     component: MovieDetailsPage,
+    props: true,
+  },
+  {
+    path: "/register",
+    name: "RegisterPage",
+    component: RegisterPage,
     props: true,
   },
   {

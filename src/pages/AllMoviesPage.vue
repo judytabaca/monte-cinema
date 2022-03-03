@@ -1,18 +1,17 @@
 <template>
   <div>
     <h1>All Movies Page</h1>
-    <router-link to="/movie/1">Movie Number 1</router-link>
-    <a href="" @click="movie2">Movie Number 2</a>
+    <MovieList />
   </div>
 </template>
 
 <script>
+import MovieList from "../components/movies/MovieList.vue";
+
 export default {
   name: "AllMoviesPage",
-  methods: {
-    movie2() {
-      this.$router.push("/movie/2");
-    },
+  components: {
+    MovieList,
   },
 };
 </script>

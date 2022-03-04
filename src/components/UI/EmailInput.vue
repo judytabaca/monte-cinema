@@ -1,5 +1,5 @@
 <template>
-  <Fragment>
+  <div>
     <label for="email">Email</label>
     <input
       required
@@ -8,16 +8,14 @@
       :value="value"
       name="email"
       @input="$emit('input', $event.target.value)"
+      @blur="$emit('blurTouched')"
     />
-  </Fragment>
+  </div>
 </template>
 
 <script>
-import { Fragment } from "vue-fragment";
-
 export default {
   name: "MainInput",
-  components: { Fragment },
   props: {
     value: {
       type: String,

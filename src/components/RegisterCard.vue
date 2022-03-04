@@ -1,14 +1,30 @@
 <template>
   <div class="register-card-wrapper">
-    <form class="register-card-wrapper__form" @submit.prevent="registerUser">
-      <MainInput v-model="RegisterInfo.email" />
-      <PasswordInput v-model="RegisterInfo.password" />
-      <p>At least 8 characters</p>
-      <p>At lest one letter</p>
-      <p>At least one digit</p>
-      <div class="register-card-wrapper__form__buttons">
-        <MainButton button-type="secondary">Log in instead</MainButton>
-        <MainButton button-type="primary">Next step</MainButton>
+    <form @submit.prevent="submitForm" novalidate>
+      <div
+        class="register-card-wrapper__form form-field"
+        :class="{ 'form-field--error': !!emailError }"
+      >
+        <MainInput v-model="email" @blurTouched="emailTouched = true" />
+        <div>
+          {{ emailError }}
+        </div>
+        <PasswordInput
+          v-model="password"
+          @blurTouched="passwordTouched = true"
+        />
+        <div>
+          {{ passwordError }}
+        </div>
+        <p>At least 8 characters</p>
+        <p>At lest one letter</p>
+        <p>At least one digit</p>
+        <div class="register-card-wrapper__form__buttons">
+          <MainButton button-type="secondary">Log in instead</MainButton>
+          <MainButton button-type="primary" :disabled="!isFormValid"
+            >Next step</MainButton
+          >
+        </div>
       </div>
     </form>
   </div>
@@ -19,25 +35,60 @@ import MainButton from "./MainButton.vue";
 import MainInput from "./UI/EmailInput.vue";
 import PasswordInput from "./UI/PasswordInput.vue";
 
+const isEmailValid = (email) => email && email.includes("@");
+
 export default {
   data() {
     return {
-      RegisterInfo: {
-        email: "",
-        password: "",
-      },
+      email: "",
+      password: "",
+      emailTouched: false,
+      passwordTouched: false,
     };
+  },
+  methods: {
+    registerUser() {
+      console.log("user email: ", this.email);
+      console.log("user password: ", this.password);
+    },
+    submitForm() {
+      this.touchAll();
+      if (this.isFormValid) {
+        console.log("submitted");
+        this.registerUser();
+      }
+    },
+    touchAll() {
+      this.emailTouched = true;
+      this.passwordTouched = true;
+    },
+  },
+  computed: {
+    emailError() {
+      if (!this.emailTouched) return "";
+      if (!this.email) {
+        return "Email is required";
+      }
+      if (!isEmailValid(this.email)) {
+        return "Email should contain @ character";
+      }
+      return "";
+    },
+    passwordError() {
+      if (!this.passwordTouched) return "";
+      if (!this.password) {
+        return "Password can not be empty";
+      }
+      return "";
+    },
+    isFormValid() {
+      return !this.emailError && !this.passwordError;
+    },
   },
   components: {
     MainButton,
     MainInput,
     PasswordInput,
-  },
-  methods: {
-    registerUser() {
-      console.log("user email: ", this.RegisterInfo.email);
-      console.log("user password: ", this.RegisterInfo.password);
-    },
   },
 };
 </script>

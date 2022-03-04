@@ -1,5 +1,5 @@
 <template>
-  <Fragment>
+  <div>
     <label for="password">Password</label>
     <input
       required
@@ -8,19 +8,17 @@
       :value="value"
       name="password"
       @input="$emit('input', $event.target.value)"
+      @blur="$emit('blurTouched')"
     />
     <div class="password-eye" @click.prevent="toggleViewPassword">
       <img src="../../assets/img/eye.png" alt="eye" />
     </div>
-  </Fragment>
+  </div>
 </template>
 
 <script>
-import { Fragment } from "vue-fragment";
-
 export default {
   name: "PasswordInput",
-  components: { Fragment },
   props: {
     value: {
       type: String,

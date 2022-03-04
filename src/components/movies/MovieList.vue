@@ -30,7 +30,6 @@ export default {
       try {
         const response = await axios.get(this.BASE_URL);
         const movies = response.data;
-        console.log(movies);
         this.moviesState = movies;
         // list rendering
       } catch (error) {

@@ -9,16 +9,23 @@
         <div>
           {{ emailError }}
         </div>
-        <PasswordInput
-          v-model="password"
-          @blurTouched="passwordTouched = true"
-        />
+        <PasswordInput v-model="password" @blurTouched="isValidPassword()" />
         <div>
           {{ passwordError }}
         </div>
-        <p>At least 8 characters</p>
-        <p>At lest one letter</p>
-        <p>At least one digit</p>
+        <p
+          :class="{
+            password_error: passwordTouched && !passwordEightCharacters,
+          }"
+        >
+          At least 8 characters
+        </p>
+        <p :class="{ password_error: passwordTouched && !passwordOneLetter }">
+          At lest one letter
+        </p>
+        <p :class="{ password_error: passwordTouched && !passwordOneDigit }">
+          At least one digit
+        </p>
         <div class="register-card-wrapper__form__buttons">
           <MainButton button-type="secondary">Log in instead</MainButton>
           <MainButton button-type="primary" :disabled="!isFormValid"
@@ -35,8 +42,6 @@ import MainButton from "./MainButton.vue";
 import MainInput from "./UI/EmailInput.vue";
 import PasswordInput from "./UI/PasswordInput.vue";
 
-const isEmailValid = (email) => email && email.includes("@");
-
 export default {
   data() {
     return {
@@ -44,6 +49,9 @@ export default {
       password: "",
       emailTouched: false,
       passwordTouched: false,
+      passwordEightCharacters: false,
+      passwordOneLetter: false,
+      passwordOneDigit: false,
     };
   },
   methods: {
@@ -62,6 +70,37 @@ export default {
       this.emailTouched = true;
       this.passwordTouched = true;
     },
+    isEmailValid(email) {
+      let emailRegEx =
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return email && emailRegEx.exec(email);
+    },
+    isValidPassword(password) {
+      if (this.password.length > 7) {
+        this.passwordEightCharacters = true;
+      } else {
+        this.passwordEightCharacters = false;
+      }
+
+      if (/\d/.exec(password)) {
+        this.passwordOneDigit = true;
+      } else {
+        this.passwordOneDigit = false;
+      }
+
+      if (/[a-z ]/.exec(password)) {
+        this.passwordOneLetter = true;
+      } else {
+        this.passwordOneLetter = false;
+      }
+
+      return (
+        password &&
+        this.passwordEightCharacters &&
+        this.passwordOneDigit &&
+        this.passwordOneLetter
+      );
+    },
   },
   computed: {
     emailError() {
@@ -69,15 +108,18 @@ export default {
       if (!this.email) {
         return "Email is required";
       }
-      if (!isEmailValid(this.email)) {
-        return "Email should contain @ character";
+      if (!this.isEmailValid(this.email)) {
+        return "Please provide valid email address";
       }
       return "";
     },
     passwordError() {
       if (!this.passwordTouched) return "";
       if (!this.password) {
-        return "Password can not be empty";
+        return "Password is required";
+      }
+      if (this.isValidPassword(this.password)) {
+        return "";
       }
       return "";
     },
@@ -102,6 +144,10 @@ export default {
     0px 1.59602px 5.18708px rgba(0, 0, 0, 0.0161557);
   border-radius: 8px;
   margin-bottom: 40px;
+
+  .password_error {
+    color: rgb(150, 23, 23);
+  }
 
   &__form {
     display: flex;

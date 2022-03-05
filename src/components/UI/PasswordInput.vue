@@ -1,7 +1,8 @@
 <template>
-  <div>
-    <label for="password">Password</label>
+  <div class="wrapper">
+    <label for="password" class="password-label">Password</label>
     <input
+      class="password-input"
       required
       :type="inputType"
       placeholder="Enter your password"
@@ -10,9 +11,9 @@
       @input="$emit('input', $event.target.value)"
       @blur="$emit('blurTouched')"
     />
-    <div class="password-eye" @click.prevent="toggleViewPassword">
+    <button class="password-eye" @click.prevent="toggleViewPassword">
       <img src="../../assets/img/eye.png" alt="eye" />
-    </div>
+    </button>
   </div>
 </template>
 
@@ -44,31 +45,34 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-input {
-  display: block;
-  max-width: 100%;
-  padding: 1em 1.5em;
-  border: 0;
-  border-radius: 0.5em;
-  background-color: $input-background;
-}
-
-label {
-  color: $bittersweet;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 18px;
-  margin: 12px 0;
-}
-
-.password-eye {
+.wrapper {
   position: relative;
 
-  img {
+  .password-input {
+    display: block;
+    width: 100%;
+    padding: 1em 1.5em;
+    border: 0;
+    border-radius: 0.5em;
+    background-color: $input-background;
+  }
+
+  .password-label {
+    color: $bittersweet;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 12px 0;
+  }
+
+  .password-eye {
     position: absolute;
-    top: -30px;
+    top: 30px;
     right: 3%;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
   }
 }
 </style>

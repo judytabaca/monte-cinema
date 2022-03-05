@@ -36,7 +36,7 @@ label {
 }
 input {
   display: block;
-  max-width: 100%;
+  width: 100%;
   padding: 1em 1.5em;
   border: 0;
   border-radius: 0.5em;

@@ -137,7 +137,7 @@ export default {
 
 <style lang="scss" scoped>
 .register-card-wrapper {
-  width: 45%;
+  min-width: 600px;
   padding: 40px;
   box-shadow: 0px 24px 78px rgba(0, 0, 0, 0.08),
     0px 5.36071px 17.4223px rgba(0, 0, 0, 0.0238443),
@@ -180,6 +180,22 @@ export default {
 
       &:last-of-type {
         margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .register-card-wrapper {
+    width: 100%;
+    padding: 40px;
+    box-shadow: none;
+    border-radius: 0px;
+    margin-bottom: 40px;
+
+    &__form {
+      &__buttons {
+        flex-direction: column-reverse;
       }
     }
   }

@@ -5,6 +5,7 @@
       :key="movie.id"
       :title="movie.title"
       :img="movie.poster_url"
+      :genre="movie.genre.name"
     >
     </MovieCard>
   </div>
@@ -12,7 +13,7 @@
 
 <script>
 import apiMoviesService from "../../services/api/apiMoviesService";
-import MovieCard from "../MovieCard.vue";
+import MovieCard from "./MovieCard.vue";
 
 export default {
   name: "MovieList",

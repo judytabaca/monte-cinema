@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import RegisterCard from "../components/RegisterCard.vue";
+import RegisterCard from "../components/register/RegisterCard.vue";
 export default {
   name: "RegisterPage",
   components: { RegisterCard },

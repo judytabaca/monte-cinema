@@ -38,9 +38,9 @@
 </template>
 
 <script>
-import MainButton from "./MainButton.vue";
-import MainInput from "./UI/EmailInput.vue";
-import PasswordInput from "./UI/PasswordInput.vue";
+import MainButton from "../UI/MainButton.vue";
+import MainInput from "../UI/EmailInput.vue";
+import PasswordInput from "../UI/PasswordInput.vue";
 
 export default {
   data() {

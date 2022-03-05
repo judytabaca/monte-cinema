@@ -11,14 +11,14 @@
         :key="movie.title"
         :title="movie.title"
         :img="movie.img"
-        :description="movie.description"
+        :genre="movie.genre.name"
       ></MovieCard>
     </div>
   </div>
 </template>
 
 <script>
-import MovieCard from "./MovieCard.vue";
+import MovieCard from "../movies/MovieCard.vue";
 
 import imgPredator from "@/assets/img/predator.png";
 import imgCommando from "@/assets/img/commando.png";
@@ -34,18 +34,27 @@ export default {
           img: imgPredator,
           description:
             "A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior.",
+          genre: {
+            name: "Action",
+          },
         },
         {
           title: "Commando",
           img: imgCommando,
           description:
             "A retired Special Forces colonel tries to save his daughter, who was abducted by his former subordinate.",
+          genre: {
+            name: "Action",
+          },
         },
         {
           title: "Terminator 2",
           img: imgTerminator,
           description:
             "A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior.",
+          genre: {
+            name: "Action",
+          },
         },
       ],
     };

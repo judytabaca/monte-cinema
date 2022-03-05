@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import WelcomeCard from "../components/WelcomeCard.vue";
-import OnlineBooking from "../components/OnlineBooking.vue";
-import ComingSoon from "../components/ComingSoon.vue";
+import WelcomeCard from "../components/home/WelcomeCard.vue";
+import OnlineBooking from "../components/home/OnlineBooking.vue";
+import ComingSoon from "../components/home/ComingSoon.vue";
 
 export default {
   name: "HomePage",

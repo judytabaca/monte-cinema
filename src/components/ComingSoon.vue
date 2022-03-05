@@ -7,19 +7,11 @@
     </div>
     <div class="coming-soon__wrapper">
       <MovieCard
-        title="Predator"
-        img="/src/assets/img/predator.png"
-        description="A team of commandos on a mission in a Central American jungle find themselves haunted by an extraterrestrial warrior."
-      ></MovieCard>
-      <MovieCard
-        title="Commando"
-        img="{movie2}"
-        description="A retired Special Forces colonel tries to save his daughter, who was abducted by his former subordinate."
-      ></MovieCard>
-      <MovieCard
-        title="Terminator 2"
-        img="{movie3}"
-        description="A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior."
+        v-for="movie in movies"
+        :key="movie.title"
+        :title="movie.title"
+        :img="movie.img"
+        :description="movie.description"
       ></MovieCard>
     </div>
   </div>
@@ -28,8 +20,36 @@
 <script>
 import MovieCard from "./MovieCard.vue";
 
+import imgPredator from "@/assets/img/predator.png";
+import imgCommando from "@/assets/img/commando.png";
+import imgTerminator from "@/assets/img/terminator.png";
+
 export default {
   name: "ComingSoon",
+  data() {
+    return {
+      movies: [
+        {
+          title: "Predator",
+          img: imgPredator,
+          description:
+            "A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior.",
+        },
+        {
+          title: "Commando",
+          img: imgCommando,
+          description:
+            "A retired Special Forces colonel tries to save his daughter, who was abducted by his former subordinate.",
+        },
+        {
+          title: "Terminator 2",
+          img: imgTerminator,
+          description:
+            "A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior.",
+        },
+      ],
+    };
+  },
   components: {
     MovieCard,
   },
@@ -70,8 +90,8 @@ export default {
   }
 }
 
-@media only screen and (max-width: 1024px) and (min-width: 450px) {
-  .scoming-soon__wrapper {
+@media only screen and (max-width: 1024px) and (min-width: 550px) {
+  .coming-soon__wrapper {
     div:nth-of-type(3) {
       display: none;
     }
@@ -82,27 +102,22 @@ export default {
   }
 }
 
-@media only screen and (max-width: 450px) {
-  .cominng-soon__wrapper {
-    width: 92%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
+@media only screen and (max-width: 550px) {
+  .coming-soon__wrapper {
     flex-direction: column;
+    align-items: center;
+    width: 94%;
 
-    &__headings {
-      h3:nth-of-type(1) {
-        display: none;
-      }
-
-      h3:nth-of-type(2) {
-        display: inline-block;
-      }
+    div:nth-of-type(1) {
+      display: none;
     }
 
-    .coming-soon__wrapper {
-      flex-direction: column;
-      align-items: center;
+    .movie__wrapper {
+      width: 100%;
+    }
+
+    div:nth-of-type(2) {
+      display: inline-block;
     }
   }
 }

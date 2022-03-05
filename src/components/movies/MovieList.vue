@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import apiMoviesService from "../../services/api/apiMoviesService";
 import MovieCard from "../MovieCard.vue";
 
 export default {
@@ -21,19 +21,15 @@ export default {
   },
   data() {
     return {
-      BASE_URL: "http://localhost:3000/movies",
       moviesState: [],
     };
   },
   methods: {
     async getMovies() {
       try {
-        const response = await axios.get(this.BASE_URL);
-        const movies = response.data;
-        this.moviesState = movies;
-        // list rendering
-      } catch (error) {
-        console.error(error);
+        this.moviesState = await apiMoviesService.getMovieList();
+      } catch (err) {
+        console.log(err);
       }
     },
   },

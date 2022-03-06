@@ -55,6 +55,7 @@ export default {
     border: 0;
     border-radius: 0.5em;
     background-color: $input-background;
+    margin-bottom: 15px;
   }
 
   .password-label {

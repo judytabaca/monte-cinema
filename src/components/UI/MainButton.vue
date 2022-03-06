@@ -1,5 +1,5 @@
 <template>
-  <button :class="buttonClasses"><slot /></button>
+  <button :disabled="disabled" :class="buttonClasses"><slot /></button>
 </template>
 
 <script>
@@ -13,6 +13,10 @@ export default {
     buttonType: {
       type: String,
       default: "primary",
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -61,6 +65,15 @@ export default {
     &:focus {
       background-color: $totem-pole;
       border: 5px solid $bittersweet;
+    }
+  }
+
+  &:disabled {
+    background-color: $jumbo;
+    cursor: not-allowed;
+    border: 0;
+    &:hover {
+      opacity: 90%;
     }
   }
 }

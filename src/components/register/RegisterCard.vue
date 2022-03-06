@@ -9,21 +9,24 @@
         <div>
           {{ emailError }}
         </div>
-        <PasswordInput v-model="password" @blurTouched="isValidPassword()" />
+        <PasswordInput
+          v-model="password"
+          @blurTouched="passwordTouched = true"
+        />
         <div>
           {{ passwordError }}
         </div>
         <p
           :class="{
-            password_error: passwordTouched && !passwordEightCharacters,
+            password_error: !passwordEightCharacters && passwordTouched,
           }"
         >
           At least 8 characters
         </p>
-        <p :class="{ password_error: passwordTouched && !passwordOneLetter }">
+        <p :class="{ password_error: !passwordOneLetter && passwordTouched }">
           At lest one letter
         </p>
-        <p :class="{ password_error: passwordTouched && !passwordOneDigit }">
+        <p :class="{ password_error: !passwordOneDigit && passwordTouched }">
           At least one digit
         </p>
         <div class="register-card-wrapper__form__buttons">
@@ -76,6 +79,12 @@ export default {
       return email && emailRegEx.exec(email);
     },
     isValidPassword(password) {
+      console.log(password);
+      console.log(
+        this.passwordEightCharacters,
+        this.passwordOneDigit,
+        this.passwordOneLetter
+      );
       if (this.password.length > 7) {
         this.passwordEightCharacters = true;
       } else {
@@ -103,16 +112,6 @@ export default {
     },
   },
   computed: {
-    emailError() {
-      if (!this.emailTouched) return "";
-      if (!this.email) {
-        return "Email is required";
-      }
-      if (!this.isEmailValid(this.email)) {
-        return "Please provide valid email address";
-      }
-      return "";
-    },
     passwordError() {
       if (!this.passwordTouched) return "";
       if (!this.password) {
@@ -120,6 +119,16 @@ export default {
       }
       if (this.isValidPassword(this.password)) {
         return "";
+      }
+      return "";
+    },
+    emailError() {
+      if (!this.emailTouched) return "";
+      if (!this.email) {
+        return "Email is required";
+      }
+      if (!this.isEmailValid(this.email)) {
+        return "Please provide valid email address";
       }
       return "";
     },

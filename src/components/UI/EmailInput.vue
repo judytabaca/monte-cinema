@@ -3,6 +3,7 @@
     <label for="email">Email</label>
     <input
       required
+      class="email__input"
       type="email"
       placeholder="Enter your email"
       :value="value"
@@ -34,12 +35,13 @@ label {
   line-height: 18px;
   margin: 12px 0;
 }
-input {
+.email__input {
   display: block;
   width: 100%;
   padding: 1em 1.5em;
   border: 0;
   border-radius: 0.5em;
   background-color: $input-background;
+  margin-bottom: 15px;
 }
 </style>

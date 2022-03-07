@@ -28,7 +28,10 @@ export default {
   methods: {
     async getMovies() {
       try {
-        this.moviesState = await apiMoviesService.getMovieList();
+        // this.moviesState = await apiMoviesService.getMovieList();
+        const movies = await apiMoviesService.getMovieList();
+        this.$store.commit("setMovies", movies);
+        console.log("store", this.$store.getters.getMovies);
       } catch (err) {
         console.log(err);
       }

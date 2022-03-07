@@ -12,31 +12,12 @@
 </template>
 
 <script>
-import apiMoviesService from "../../services/api/apiMoviesService";
 import MovieCard from "./MovieCard.vue";
 
 export default {
   name: "MovieList",
   components: {
     MovieCard,
-  },
-  data() {
-    return {
-      moviesState: [],
-    };
-  },
-  methods: {
-    async getMovies() {
-      try {
-        const movies = await apiMoviesService.getMovieList();
-        this.$store.commit("setMovies", movies);
-      } catch (err) {
-        console.log(err);
-      }
-    },
-  },
-  mounted() {
-    this.getMovies();
   },
 };
 </script>

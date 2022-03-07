@@ -1,7 +1,7 @@
 <template>
   <div>
     <MovieCard
-      v-for="movie in moviesState"
+      v-for="movie in this.$store.getters.getMovies"
       :key="movie.id"
       :title="movie.title"
       :img="movie.poster_url"
@@ -28,10 +28,8 @@ export default {
   methods: {
     async getMovies() {
       try {
-        // this.moviesState = await apiMoviesService.getMovieList();
         const movies = await apiMoviesService.getMovieList();
         this.$store.commit("setMovies", movies);
-        console.log("store", this.$store.getters.getMovies);
       } catch (err) {
         console.log(err);
       }

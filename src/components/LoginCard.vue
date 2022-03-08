@@ -1,5 +1,9 @@
 <template>
-  <div></div>
+  <div class="login-card-wrapper">
+    <form novalidate>
+      <div class="login-card-wrapper__form"></div>
+    </form>
+  </div>
 </template>
 
 <script>

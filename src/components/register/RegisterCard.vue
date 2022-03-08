@@ -52,9 +52,6 @@ export default {
       password: "",
       emailTouched: false,
       passwordTouched: false,
-      // passwordEightCharacters: false,
-      // passwordOneLetter: false,
-      // passwordOneDigit: false,
     };
   },
   methods: {

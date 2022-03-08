@@ -5,6 +5,7 @@ import ContactPage from "@/pages/ContactPage.vue";
 import MovieDetailsPage from "@/pages/MovieDetailsPage.vue";
 import ScreeningsPage from "@/pages/ScreeningsPage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
+import RegisterPage from "@/pages/RegisterPage.vue";
 import NoPage from "@/pages/NoPage.vue";
 
 const routes = [
@@ -38,6 +39,12 @@ const routes = [
     path: "/login",
     name: "LoginPage",
     component: LoginPage,
+  },
+  {
+    path: "/register",
+    name: "RegisterPage",
+    component: RegisterPage,
+    props: true,
   },
   {
     path: "/404",

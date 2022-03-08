@@ -18,9 +18,13 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 html {
   scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .app {

@@ -5,14 +5,15 @@
       :key="movie.id"
       :title="movie.title"
       :img="movie.poster_url"
+      :genre="movie.genre.name"
     >
     </MovieCard>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-import MovieCard from "../MovieCard.vue";
+import apiMoviesService from "../../services/api/apiMoviesService";
+import MovieCard from "./MovieCard.vue";
 
 export default {
   name: "MovieList",
@@ -21,20 +22,15 @@ export default {
   },
   data() {
     return {
-      BASE_URL: "http://localhost:3000/movies",
       moviesState: [],
     };
   },
   methods: {
     async getMovies() {
       try {
-        const response = await axios.get(this.BASE_URL);
-        const movies = response.data;
-        console.log(movies);
-        this.moviesState = movies;
-        // list rendering
-      } catch (error) {
-        console.error(error);
+        this.moviesState = await apiMoviesService.getMovieList();
+      } catch (err) {
+        console.log(err);
       }
     },
   },

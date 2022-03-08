@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import MainButton from "./MainButton.vue";
+import MainButton from "../UI/MainButton.vue";
 
 export default {
   name: "WelcomeCard",

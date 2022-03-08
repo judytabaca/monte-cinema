@@ -4,7 +4,7 @@
     <div class="image__wrapper">
       <img :src="img" />
     </div>
-    <p>{{ description }}</p>
+    <p>{{ genre }}</p>
   </div>
 </template>
 
@@ -16,9 +16,9 @@ export default {
       type: String,
       default: "movie",
     },
-    description: {
+    genre: {
       type: String,
-      default: "movie description",
+      default: "genre",
     },
     img: {
       type: String,

@@ -52,9 +52,9 @@ export default {
       password: "",
       emailTouched: false,
       passwordTouched: false,
-      passwordEightCharacters: false,
-      passwordOneLetter: false,
-      passwordOneDigit: false,
+      // passwordEightCharacters: false,
+      // passwordOneLetter: false,
+      // passwordOneDigit: false,
     };
   },
   methods: {
@@ -79,30 +79,6 @@ export default {
       return email && emailRegEx.exec(email);
     },
     isValidPassword(password) {
-      console.log(password);
-      console.log(
-        this.passwordEightCharacters,
-        this.passwordOneDigit,
-        this.passwordOneLetter
-      );
-      if (this.password.length > 7) {
-        this.passwordEightCharacters = true;
-      } else {
-        this.passwordEightCharacters = false;
-      }
-
-      if (/\d/.exec(password)) {
-        this.passwordOneDigit = true;
-      } else {
-        this.passwordOneDigit = false;
-      }
-
-      if (/[a-z ]/.exec(password)) {
-        this.passwordOneLetter = true;
-      } else {
-        this.passwordOneLetter = false;
-      }
-
       return (
         password &&
         this.passwordEightCharacters &&
@@ -131,6 +107,15 @@ export default {
         return "Please provide valid email address";
       }
       return "";
+    },
+    passwordEightCharacters() {
+      return this.password.length > 7;
+    },
+    passwordOneDigit() {
+      return /\d/.test(this.password);
+    },
+    passwordOneLetter() {
+      return /[a-z]/.test(this.password);
     },
     isFormValid() {
       return !this.emailError && !this.passwordError;

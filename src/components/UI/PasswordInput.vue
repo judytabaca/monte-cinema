@@ -11,7 +11,7 @@
       @input="$emit('input', $event.target.value)"
       @blur="$emit('blurTouched')"
     />
-    <button class="password-eye" @click.prevent="toggleViewPassword">
+    <button type="button" class="password-eye" @click="toggleViewPassword">
       <img src="../../assets/img/eye.png" alt="eye" />
     </button>
   </div>
@@ -32,7 +32,7 @@ export default {
     };
   },
   methods: {
-    toggleViewPassword: function () {
+    toggleViewPassword() {
       this.showPassword = !this.showPassword;
     },
   },

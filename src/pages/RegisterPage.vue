@@ -1,7 +1,7 @@
 <template>
   <div class="register-page">
-    <h1 class="register-page__ahoy">Ahoy you!</h1>
-    <h1 class="register-page__care">Care to register?</h1>
+    <p class="register-page__ahoy">Ahoy you!</p>
+    <p class="register-page__care">Care to register?</p>
 
     <RegisterCard />
   </div>
@@ -21,7 +21,7 @@ export default {
   align-items: center;
   flex-direction: column;
 
-  h1 {
+  p {
     font-weight: 600;
     font-size: 80px;
     line-height: 108%;

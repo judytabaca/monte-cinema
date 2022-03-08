@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: "MainInput",
+  name: "EmailInput",
   props: {
     value: {
       type: String,

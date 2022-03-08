@@ -1,7 +1,7 @@
 <template>
   <div class="login-page">
-    <h1 class="login-page__hi">Hi there!</h1>
-    <p>Care to log in?</p>
+    <p class="login-page__hi">Hi there!</p>
+    <p class="login-page__care">Care to log in?</p>
     <LoginCard />
   </div>
 </template>
@@ -20,16 +20,18 @@ export default {
   display: flex;
   align-items: center;
   flex-direction: column;
-  h1 {
+
+  p {
     font-weight: 600;
     font-size: 80px;
     line-height: 108%;
     letter-spacing: -0.01em;
-
+  }
+  .login-page__hi {
     color: $tuna;
     margin-top: 40px;
   }
-  p {
+  .login-page__care {
     color: $jumbo;
     margin-bottom: 40px;
   }

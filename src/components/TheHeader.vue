@@ -1,11 +1,22 @@
 <template>
   <header class="header">
     <div class="logo">
-      <img src="@/assets/img/logo.svg" />
+      <router-link to="/">
+        <img src="@/assets/img/logo.svg" />
+      </router-link>
     </div>
-    <div class="header__buttons">
-      <MainButton button-type="secondary">Register</MainButton>
-      <MainButton button-type="primary">Login</MainButton>
+    <div v-if="!isLogin && !isRegister">
+      <router-link :to="{ name: 'AllMovies' }">Movies</router-link>
+      <router-link to="#">Screenings</router-link>
+      <router-link to="#">Contact us</router-link>
+    </div>
+    <div v-if="!isLogin && !isRegister" class="header__buttons">
+      <router-link :to="{ name: 'RegisterPage' }">
+        <MainButton button-type="secondary">Register</MainButton>
+      </router-link>
+      <router-link :to="{ name: 'LoginPage' }">
+        <MainButton button-type="primary">Login</MainButton>
+      </router-link>
       <div class="menu__toggle">
         <div>
           <div class="line"></div>
@@ -14,6 +25,7 @@
         </div>
       </div>
     </div>
+    <div v-if="isLogin || isRegister">DESIGNED BY WITH ❤️ BY MONTERAIL</div>
   </header>
 </template>
 
@@ -22,6 +34,14 @@ import MainButton from "./UI/MainButton.vue";
 
 export default {
   name: "TheHeader",
+  computed: {
+    isLogin() {
+      return this.$route.name === "LoginPage";
+    },
+    isRegister() {
+      return this.$route.name === "RegisterPage";
+    },
+  },
   components: {
     MainButton,
   },

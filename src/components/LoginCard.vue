@@ -8,10 +8,14 @@
           @blurTouched="passwordTouched = true"
         />
         <div class="login-card-wrapper__form__buttons">
-          <MainButton button-type="secondary">Register instead</MainButton>
-          <MainButton button-type="primary" :disabled="!isFormValid"
-            >Log In</MainButton
-          >
+          <router-link :to="{ name: 'RegisterPage' }">
+            <MainButton button-type="secondary">Register instead</MainButton>
+          </router-link>
+          <router-link to="#">
+            <MainButton button-type="primary" :disabled="!isFormValid"
+              >Log In</MainButton
+            >
+          </router-link>
         </div>
       </div>
     </form>

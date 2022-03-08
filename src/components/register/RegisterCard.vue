@@ -30,10 +30,14 @@
           At least one digit
         </p>
         <div class="register-card-wrapper__form__buttons">
-          <MainButton button-type="secondary">Log in instead</MainButton>
-          <MainButton button-type="primary" :disabled="!isFormValid"
-            >Next step</MainButton
-          >
+          <router-link :to="{ name: 'LoginPage' }">
+            <MainButton button-type="secondary">Log in instead</MainButton>
+          </router-link>
+          <router-link to="#">
+            <MainButton button-type="primary" :disabled="!isFormValid"
+              >Next step</MainButton
+            >
+          </router-link>
         </div>
       </div>
     </form>

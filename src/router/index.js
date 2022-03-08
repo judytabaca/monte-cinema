@@ -4,6 +4,7 @@ import AllMovies from "@/pages/AllMoviesPage.vue";
 import ContactPage from "@/pages/ContactPage.vue";
 import MovieDetailsPage from "@/pages/MovieDetailsPage.vue";
 import ScreeningsPage from "@/pages/ScreeningsPage.vue";
+import LoginPage from "@/pages/LoginPage.vue";
 import NoPage from "@/pages/NoPage.vue";
 
 const routes = [
@@ -32,6 +33,11 @@ const routes = [
     name: "MovieDetailsPage",
     component: MovieDetailsPage,
     props: true,
+  },
+  {
+    path: "/login",
+    name: "LoginPage",
+    component: LoginPage,
   },
   {
     path: "/404",

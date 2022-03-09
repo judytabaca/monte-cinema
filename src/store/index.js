@@ -1,22 +1,32 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import apiMoviesService from "../services/api/apiMoviesService";
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    stateMovies: [],
+    moviesRecord: [],
   },
   getters: {
-    getMovies: (state) => {
-      return state.stateMovies;
+    movieList: (state) => {
+      return state.moviesRecord;
     },
   },
   mutations: {
     setMovies(state, payload) {
-      state.stateMovies = payload;
+      state.moviesRecord = payload;
     },
   },
-  actions: {},
+  actions: {
+    async getMovies({ commit }) {
+      try {
+        const movies = await apiMoviesService.getMovieList();
+        commit("setMovies", movies);
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
   modules: {},
 });

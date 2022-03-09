@@ -1,7 +1,7 @@
 <template>
   <div>
     <MovieCard
-      v-for="movie in this.$store.getters.getMovies"
+      v-for="movie in $store.getters.movieList"
       :key="movie.id"
       :title="movie.title"
       :img="movie.poster_url"

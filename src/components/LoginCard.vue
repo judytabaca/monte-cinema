@@ -103,17 +103,30 @@ export default {
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 1024px) and (min-width: 650px) {
+}
+
+@media only screen and (max-width: 650px) {
   .login-card-wrapper {
-    width: 100%;
+    min-width: 100%;
     padding: 40px;
     box-shadow: none;
     border-radius: 0px;
-    margin-bottom: 40px;
+    margin-bottom: 0;
 
     &__form {
       &__buttons {
+        margin-top: 2em;
         flex-direction: column-reverse;
+        align-items: center;
+
+        a {
+          width: 95%;
+
+          button {
+            width: 95%;
+          }
+        }
       }
     }
   }

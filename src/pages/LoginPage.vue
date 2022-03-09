@@ -55,4 +55,21 @@ export default {
     }
   }
 }
+@media only screen and (max-width: 1024px) and (min-width: 650px) {
+}
+
+@media only screen and (max-width: 650px) {
+  .login-page {
+    p {
+      font-size: 40px;
+      min-width: 100%;
+      text-align: center;
+    }
+
+    &__forgot-password {
+      min-width: 100%;
+      text-align: center;
+    }
+  }
+}
 </style>

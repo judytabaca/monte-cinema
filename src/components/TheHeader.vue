@@ -25,7 +25,9 @@
         </div>
       </div>
     </div>
-    <div v-if="isLogin || isRegister">DESIGNED BY WITH ❤️ BY MONTERAIL</div>
+    <div class="with-love" v-if="isLogin || isRegister">
+      designed with ❤️ by monterail
+    </div>
   </header>
 </template>
 
@@ -55,6 +57,16 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 20px 0px;
+
+  .with-love {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: right;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
 
   .header__buttons {
     display: flex;

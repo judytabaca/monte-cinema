@@ -74,6 +74,7 @@ export default {
       display: flex;
       text-align: center;
       justify-content: center;
+      font-weight: 700;
 
       &--secondary {
         color: $cherry-red;

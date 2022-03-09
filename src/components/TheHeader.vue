@@ -5,10 +5,16 @@
         <img src="@/assets/img/logo.svg" />
       </router-link>
     </div>
-    <div v-if="!isLogin && !isRegister">
-      <router-link :to="{ name: 'AllMovies' }">Movies</router-link>
-      <router-link to="#">Screenings</router-link>
-      <router-link to="#">Contact us</router-link>
+    <div class="header__navbar" v-if="!isLogin && !isRegister">
+      <router-link :to="{ name: 'AllMovies' }" class="header__navbar-options"
+        >Movies</router-link
+      >
+      <router-link to="#" class="header__navbar-options"
+        >Screenings</router-link
+      >
+      <router-link to="#" class="header__navbar-options"
+        >Contact us</router-link
+      >
     </div>
     <div v-if="!isLogin && !isRegister" class="header__buttons">
       <router-link :to="{ name: 'RegisterPage' }">
@@ -68,7 +74,21 @@ export default {
     margin-top: 20px;
   }
 
-  .header__buttons {
+  &__navbar-options {
+    font-size: 18px;
+    line-height: 21px;
+    color: $jumbo;
+    justify-content: space-between;
+    margin: 0 30px;
+
+    &:hover,
+    &:active {
+      font-weight: 700;
+      color: $gray-abbey;
+      box-shadow: inset 0px -4px 0px $cherry-red;
+    }
+  }
+  &__buttons {
     display: flex;
     font-size: 16px;
     line-height: 100%;

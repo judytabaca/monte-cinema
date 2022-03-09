@@ -152,37 +152,37 @@ export default {
       display: flex;
       text-align: center;
       justify-content: center;
-
-      &--secondary {
-        color: $cherry-red;
-      }
     }
 
-    input {
-      display: block;
-      max-width: 100%;
-      padding: 1em 1.5em;
-      border: 0;
-      border-radius: 0.5em;
-      background-color: $input-background;
+    &--secondary {
+      color: $cherry-red;
     }
+  }
 
-    p {
-      font-size: 14px;
-      line-height: 170%;
-      letter-spacing: 0.04em;
-      color: $tuna;
+  input {
+    display: block;
+    max-width: 100%;
+    padding: 1em 1.5em;
+    border: 0;
+    border-radius: 0.5em;
+    background-color: $input-background;
+  }
 
-      &:last-of-type {
-        margin-bottom: 20px;
-      }
+  p {
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.04em;
+    color: $tuna;
+
+    &:last-of-type {
+      margin-bottom: 20px;
     }
   }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 650px) {
   .register-card-wrapper {
-    width: 100%;
+    min-width: 100%;
     padding: 40px;
     box-shadow: none;
     border-radius: 0px;
@@ -191,6 +191,15 @@ export default {
     &__form {
       &__buttons {
         flex-direction: column-reverse;
+        align-items: center;
+
+        a {
+          width: 95%;
+
+          button {
+            width: 95%;
+          }
+        }
       }
     }
   }

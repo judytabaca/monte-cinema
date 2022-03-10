@@ -1,11 +1,11 @@
 <template>
   <div class="login-page">
-    <p class="login-page__hi">Hi there!</p>
-    <p class="login-page__care">Care to log in?</p>
+    <h1 class="login-page__hi">Hi there!</h1>
+    <h2 class="login-page__care">Care to log in?</h2>
     <LoginCard />
-    <h5 class="login-page__forgot-password">
-      Did you forget your password? <span class="reset">Reset it now</span>
-    </h5>
+    <p class="login-page__forgot-password">
+      Did you forget your password? <a class="reset">Reset it now</a>
+    </p>
   </div>
 </template>
 
@@ -24,7 +24,8 @@ export default {
   align-items: center;
   flex-direction: column;
 
-  p {
+  h1,
+  h2 {
     font-weight: 600;
     font-size: 80px;
     line-height: 108%;
@@ -40,7 +41,7 @@ export default {
     margin-bottom: 40px;
   }
 
-  &__forgot-password {
+  p {
     font-size: 16px;
     font-weight: 400;
     line-height: 170%;

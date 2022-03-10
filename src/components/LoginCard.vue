@@ -2,11 +2,8 @@
   <div class="login-card-wrapper">
     <form @submit.prevent="submitForm" novalidate>
       <div class="login-card-wrapper__form form-field">
-        <MainInput v-model="email" @blurTouched="emailTouched = true" />
-        <PasswordInput
-          v-model="password"
-          @blurTouched="passwordTouched = true"
-        />
+        <MainInput v-model="email" />
+        <PasswordInput v-model="password" />
         <div class="login-card-wrapper__form__buttons">
           <router-link :to="{ name: 'RegisterPage' }">
             <MainButton button-type="secondary">Register instead</MainButton>

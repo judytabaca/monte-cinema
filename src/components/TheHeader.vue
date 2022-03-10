@@ -5,35 +5,37 @@
         <img src="@/assets/img/logo.svg" />
       </router-link>
     </div>
-    <div class="header__navbar" v-if="!isLogin && !isRegister">
-      <router-link :to="{ name: 'AllMovies' }" class="header__navbar-options"
-        >Movies</router-link
-      >
-      <router-link to="#" class="header__navbar-options"
-        >Screenings</router-link
-      >
-      <router-link to="#" class="header__navbar-options"
-        >Contact us</router-link
-      >
-    </div>
-    <div v-if="!isLogin && !isRegister" class="header__buttons">
-      <router-link :to="{ name: 'RegisterPage' }">
-        <MainButton button-type="secondary">Register</MainButton>
-      </router-link>
-      <router-link :to="{ name: 'LoginPage' }">
-        <MainButton button-type="primary">Login</MainButton>
-      </router-link>
-      <div class="menu__toggle">
-        <div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+    <template v-if="!isLogin && !isRegister">
+      <div class="header__navbar">
+        <router-link :to="{ name: 'AllMovies' }" class="header__navbar-options"
+          >Movies</router-link
+        >
+        <router-link to="#" class="header__navbar-options"
+          >Screenings</router-link
+        >
+        <router-link to="#" class="header__navbar-options"
+          >Contact us</router-link
+        >
+      </div>
+      <div class="header__buttons">
+        <router-link :to="{ name: 'RegisterPage' }">
+          <MainButton button-type="secondary">Register</MainButton>
+        </router-link>
+        <router-link :to="{ name: 'LoginPage' }">
+          <MainButton button-type="primary">Login</MainButton>
+        </router-link>
+        <div class="menu__toggle">
+          <div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="with-love" v-if="isLogin || isRegister">
-      designed with ❤️ by monterail
-    </div>
+    </template>
+    <template v-if="isLogin || isRegister">
+      <div class="with-love">designed with ❤️ by monterail</div>
+    </template>
   </header>
 </template>
 

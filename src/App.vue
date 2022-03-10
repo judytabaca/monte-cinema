@@ -8,7 +8,6 @@
 </template>
 
 <script>
-// import apiMoviesService from "../src/services/api/apiMoviesService";
 import TheHeader from "./components/TheHeader.vue";
 
 export default {
@@ -18,17 +17,8 @@ export default {
   },
 
   methods: {
-    // async getMovies() {
-    //   try {
-    //     const movies = await apiMoviesService.getMovieList();
-    //     this.$store.commit("setMovies", movies);
-    //   } catch (err) {
-    //     console.log(err);
-    //   }
-    // },
   },
   mounted() {
-    // this.getMovies();
     this.$store.dispatch("getMovies");
   },
 };

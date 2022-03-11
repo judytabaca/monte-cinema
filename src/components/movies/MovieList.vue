@@ -1,7 +1,7 @@
 <template>
   <div class="movie-list">
     <MovieCard
-      v-for="movie in $store.getters.movieList"
+      v-for="movie in moviesByCategory"
       :key="movie.id"
       :title="movie.title"
       :img="movie.poster_url"
@@ -20,7 +20,9 @@ export default {
     MovieCard,
   },
   data() {
-    return {};
+    return {
+      selectedGenre: "",
+    };
   },
   props: {
     search: {
@@ -28,11 +30,21 @@ export default {
       default: "",
     },
   },
-
   computed: {
     searchedMovies() {
       let re = new RegExp(this.search, "i");
-      return this.moviesState.filter((movie) => movie.title.match(re));
+      return this.$store.getters.movieList.filter((movie) =>
+        movie.title.match(re)
+      );
+    },
+    moviesByCategory() {
+      const moviesByCategory = this.searchedMovies.filter(
+        (movie) => movie.genre.name === this.$store.getters.selectedGenre
+      );
+      return this.$store.getters.selectedGenre == "All Movies" ||
+        this.$store.getters.selectedGenre == ""
+        ? this.searchedMovies
+        : moviesByCategory;
     },
   },
 };

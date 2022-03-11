@@ -1,0 +1,31 @@
+@mixin input-element {
+  background-color: $grey-input;
+  padding: 1em 0 1em 1.35em;
+  height: 50px;
+  margin-top: 0.75em;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  width: 60%;
+  transition: background-color 0.2s, border-color 0.2s;
+
+  &:active,
+  &:focus {
+    background-color: $input-active;
+    border: 1px solid $input-active--border;
+    caret-color: $input-active--border;
+  }
+
+  &:hover {
+    background-color: $input-hover;
+  }
+  &,
+  &::placeholder {
+    font-family: "Roboto";
+    font-size: 18px;
+    line-height: 21px;
+    font-weight: 400;
+  }
+  &::placeholder {
+    color: $jumbo;
+  }
+}

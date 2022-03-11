@@ -1,8 +1,12 @@
 <template>
-  <div>
-    <label for=""></label>
-    <select @change="$store.commit('setSelectedGenre', $event.target.value)">
+  <div class="dropdown-categories">
+    <label class="dropdown-categories__label" for="">Categories</label>
+    <select
+      class="dropdown-categories__select"
+      @change="$store.commit('setSelectedGenre', $event.target.value)"
+    >
       <option
+        class="dropdown-categories__options"
         v-for="genre in ['All Movies', ...$store.getters.genreList]"
         :key="genre"
       >
@@ -24,4 +28,23 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.dropdown-categories {
+  width: 50%;
+
+  &__label {
+    font-family: Roboto, Mono;
+    color: $bittersweet;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 12px 0;
+  }
+
+  &__select {
+    @include input-element;
+    display: block;
+  }
+}
+</style>

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>All Movies Page</h1>
+  <div class="page-title">
+    <h1>All the movies</h1>
     <div>
       <SearchInput v-model="search" />
       <MovieCategoryDropdown />
@@ -29,4 +29,18 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.page-title {
+  text-align: left;
+
+  h1 {
+    font-family: Eczar;
+    font-weight: 600;
+    font-size: 80px;
+    line-height: 82px;
+    letter-spacing: 0.01em;
+    color: $tuna;
+    margin: 32px 0px;
+  }
+}
+</style>

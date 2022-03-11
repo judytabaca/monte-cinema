@@ -1,19 +1,41 @@
 <template>
   <header class="header">
     <div class="logo">
-      <img src="@/assets/img/logo.svg" />
+      <router-link to="/">
+        <img src="@/assets/img/logo.svg" />
+      </router-link>
     </div>
-    <div class="header__buttons">
-      <MainButton button-type="secondary">Register</MainButton>
-      <MainButton button-type="primary">Login</MainButton>
-      <div class="menu__toggle">
-        <div>
-          <div class="line"></div>
-          <div class="line"></div>
-          <div class="line"></div>
+    <template v-if="!isLogin && !isRegister">
+      <div class="header__navbar">
+        <router-link :to="{ name: 'AllMovies' }" class="header__navbar-options"
+          >Movies</router-link
+        >
+        <router-link to="#" class="header__navbar-options"
+          >Screenings</router-link
+        >
+        <router-link to="#" class="header__navbar-options"
+          >Contact us</router-link
+        >
+      </div>
+      <div class="header__buttons">
+        <router-link :to="{ name: 'RegisterPage' }">
+          <MainButton button-type="secondary">Register</MainButton>
+        </router-link>
+        <router-link :to="{ name: 'LoginPage' }">
+          <MainButton button-type="primary">Login</MainButton>
+        </router-link>
+        <div class="menu__toggle">
+          <div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+          </div>
         </div>
       </div>
-    </div>
+    </template>
+    <template v-if="isLogin || isRegister">
+      <div class="with-love">designed with ❤️ by monterail</div>
+    </template>
   </header>
 </template>
 
@@ -22,6 +44,14 @@ import MainButton from "./UI/MainButton.vue";
 
 export default {
   name: "TheHeader",
+  computed: {
+    isLogin() {
+      return this.$route.name === "LoginPage";
+    },
+    isRegister() {
+      return this.$route.name === "RegisterPage";
+    },
+  },
   components: {
     MainButton,
   },
@@ -36,7 +66,31 @@ export default {
   align-items: center;
   padding: 20px 0px;
 
-  .header__buttons {
+  .with-love {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+    text-align: right;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-top: 20px;
+  }
+
+  &__navbar-options {
+    font-size: 18px;
+    line-height: 21px;
+    color: $jumbo;
+    justify-content: space-between;
+    margin: 0 30px;
+
+    &:hover,
+    &:active {
+      font-weight: 700;
+      color: $gray-abbey;
+      box-shadow: inset 0px -4px 0px $cherry-red;
+    }
+  }
+  &__buttons {
     display: flex;
     font-size: 16px;
     line-height: 100%;

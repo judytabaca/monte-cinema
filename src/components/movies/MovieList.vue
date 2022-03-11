@@ -1,7 +1,7 @@
 <template>
   <div class="movie-list">
     <MovieCard
-      v-for="movie in searchedMovies"
+      v-for="movie in $store.getters.movieList"
       :key="movie.id"
       :title="movie.title"
       :img="movie.poster_url"
@@ -12,7 +12,6 @@
 </template>
 
 <script>
-import apiMoviesService from "../../services/api/apiMoviesService";
 import MovieCard from "./MovieCard.vue";
 
 export default {
@@ -21,9 +20,7 @@ export default {
     MovieCard,
   },
   data() {
-    return {
-      moviesState: [],
-    };
+    return {};
   },
   props: {
     search: {
@@ -31,23 +28,12 @@ export default {
       default: "",
     },
   },
-  methods: {
-    async getMovies() {
-      try {
-        this.moviesState = await apiMoviesService.getMovieList();
-      } catch (err) {
-        console.log(err);
-      }
-    },
-  },
+
   computed: {
     searchedMovies() {
       let re = new RegExp(this.search, "i");
       return this.moviesState.filter((movie) => movie.title.match(re));
     },
-  },
-  mounted() {
-    this.getMovies();
   },
 };
 </script>

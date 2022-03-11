@@ -15,6 +15,12 @@ export default {
   components: {
     TheHeader,
   },
+
+  methods: {
+  },
+  mounted() {
+    this.$store.dispatch("getMovies");
+  },
 };
 </script>
 
@@ -31,6 +37,14 @@ html {
   max-width: 1440px;
   width: 95%;
   margin: auto;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
 }
 
 @media only screen and (max-width: 1024px) and (min-width: 450px) {

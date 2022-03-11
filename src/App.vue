@@ -39,6 +39,14 @@ html {
   margin: auto;
 }
 
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 1024px) and (min-width: 450px) {
   .app {
     width: 95%;

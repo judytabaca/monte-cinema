@@ -55,4 +55,28 @@ export default {
     margin: 32px 0px;
   }
 }
+
+@include md {
+  .page-title {
+    .movie-filters {
+      grid-template-columns: 2fr 1fr;
+
+      .search-input {
+        grid-column-end: 1;
+      }
+    }
+  }
+}
+
+@include sm {
+  .page-title {
+    .movie-filters {
+      grid-template-columns: 1fr;
+
+      .search-input {
+        grid-column-end: 1;
+      }
+    }
+  }
+}
 </style>

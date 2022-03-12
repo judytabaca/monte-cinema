@@ -58,4 +58,16 @@ export default {
   grid-auto-rows: auto;
   gap: 2em;
 }
+
+@include md {
+  .movie-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@include sm {
+  .movie-list {
+    grid-template-columns: 1fr;
+  }
+}
 </style>

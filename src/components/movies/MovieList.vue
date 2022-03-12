@@ -6,6 +6,7 @@
       :title="movie.title"
       :img="movie.poster_url"
       :genre="movie.genre.name"
+      :length="movie.length"
     >
     </MovieCard>
   </div>

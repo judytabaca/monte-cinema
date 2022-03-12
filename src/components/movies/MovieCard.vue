@@ -1,6 +1,8 @@
 <template>
   <div class="movie__wrapper">
     <h2>{{ title }}</h2>
+    <p>{{ toHoursAndMinutes(length) }}</p>
+    <!-- <p>{{ length }}</p> -->
     <div class="image__wrapper">
       <img :src="img" />
     </div>
@@ -23,6 +25,15 @@ export default {
     img: {
       type: String,
       default: "",
+    },
+    length: {
+      type: Number,
+      default: null,
+    },
+  },
+  methods: {
+    toHoursAndMinutes(timeInMinutes) {
+      return `${Math.floor(timeInMinutes / 60)}h ${timeInMinutes % 60} min`;
     },
   },
 };

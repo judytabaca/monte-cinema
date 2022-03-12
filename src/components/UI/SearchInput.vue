@@ -9,7 +9,9 @@
       id=""
       @input="$emit('input', $event.target.value)"
     />
-    <img src="@/assets/img/search.svg" class="search-input__icon" />
+    <button type="button" class="search-input__icon">
+      <img src="@/assets/img/search.svg" />
+    </button>
   </div>
 </template>
 
@@ -21,7 +23,7 @@ export default {
 
 <style lang="scss" scoped>
 .search-input {
-  width: 100%;
+  position: relative;
 
   &__label {
     font-family: Roboto, Mono;
@@ -35,12 +37,13 @@ export default {
   &__input {
     @include input-element;
     display: block;
+    width: 100%;
   }
 
   &__icon {
     position: absolute;
-    top: 274px;
-    right: 41.5%;
+    top: 38px;
+    right: 2%;
     border: 0;
     background-color: transparent;
   }

@@ -1,7 +1,7 @@
 <template>
   <div class="page-title">
     <h1>All the movies</h1>
-    <div>
+    <div class="movie-filters">
       <SearchInput v-model="search" />
       <MovieCategoryDropdown />
     </div>
@@ -32,6 +32,18 @@ export default {
 <style lang="scss" scoped>
 .page-title {
   text-align: left;
+
+  .movie-filters {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em;
+    margin-bottom: 3em;
+
+    .search-input {
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }
 
   h1 {
     font-family: Eczar;

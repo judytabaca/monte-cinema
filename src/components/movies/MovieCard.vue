@@ -30,7 +30,7 @@ export default {
 
 <style scoped lang="scss">
 .movie__wrapper {
-  width: 32%;
+  width: 100%;
   padding: 40px;
   box-shadow: 0px 24px 78px rgba(0, 0, 0, 0.08),
     0px 5.36071px 17.4223px rgba(0, 0, 0, 0.0238443),
@@ -44,6 +44,7 @@ export default {
     line-height: 42px;
     color: $tuna;
     margin: 8px 0px;
+    min-height: 84px;
   }
 
   .image__wrapper {

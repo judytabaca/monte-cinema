@@ -52,7 +52,9 @@ export default {
 
 <style lang="scss" scoped>
 .movie-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: auto;
+  gap: 2em;
 }
 </style>

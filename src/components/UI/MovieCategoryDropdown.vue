@@ -7,7 +7,7 @@
     >
       <option
         class="dropdown-categories__options"
-        v-for="genre in ['All Movies', ...$store.getters.genreList]"
+        v-for="genre in ['All Categories', ...$store.getters.genreList]"
         :key="genre"
       >
         {{ genre }}
@@ -30,7 +30,7 @@ export default {
 
 <style lang="scss" scoped>
 .dropdown-categories {
-  width: 50%;
+  width: 100%;
 
   &__label {
     font-family: Roboto, Mono;
@@ -45,6 +45,7 @@ export default {
   &__select {
     @include input-element;
     display: block;
+    width: 100%;
   }
 }
 </style>

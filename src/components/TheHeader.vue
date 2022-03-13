@@ -20,7 +20,9 @@
           >
         </li>
         <li>
-          <router-link to="#" class="header__navbar-options"
+          <router-link
+            :to="{ name: 'ContactPage' }"
+            class="header__navbar-options"
             >Contact us</router-link
           >
         </li>

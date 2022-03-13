@@ -3,6 +3,7 @@
     <MovieCard
       v-for="movie in moviesByCategory"
       :key="movie.id"
+      :id="movie.id"
       :title="movie.title"
       :img="movie.poster_url"
       :genre="movie.genre.name"

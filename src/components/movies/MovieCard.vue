@@ -1,6 +1,8 @@
 <template>
   <div class="movie__wrapper">
-    <h2>{{ title }}</h2>
+    <router-link :to="`movie/${id}`">
+      <h2>{{ title }}</h2>
+    </router-link>
     <p>{{ toHoursAndMinutes(length) }}</p>
     <!-- <p>{{ length }}</p> -->
     <div class="image__wrapper">
@@ -13,6 +15,11 @@
 <script>
 export default {
   name: "MovieCard",
+  data() {
+    return {
+      movie: null,
+    };
+  },
   props: {
     title: {
       type: String,
@@ -27,6 +34,10 @@ export default {
       default: "",
     },
     length: {
+      type: Number,
+      default: null,
+    },
+    id: {
       type: Number,
       default: null,
     },

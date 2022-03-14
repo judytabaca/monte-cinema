@@ -41,6 +41,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  font-family: "Eczar";
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 82px;
+  letter-spacing: -0.01em;
+  color: $tuna;
+  margin: 32px 0px;
+}
+
 .contact-page {
   display: flex;
   height: 415px;
@@ -98,6 +108,10 @@ export default {
 }
 
 @include sm {
+  h1 {
+    font-size: 48px;
+    line-height: 49px;
+  }
   .contact-page {
     flex-direction: column;
     background-color: transparent;

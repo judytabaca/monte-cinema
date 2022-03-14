@@ -23,7 +23,9 @@ export default {
   name: "MovieDetailsPage",
   data() {
     return {
-      movie: {},
+      movie: this.$store.getters.movieList.filter(
+        (movie) => movie.id == this.movieId
+      ),
     };
   },
   props: {
@@ -33,18 +35,9 @@ export default {
     },
   },
   methods: {
-    movieDetails() {
-      this.movie = this.$store.getters.movieList.filter(
-        (movie) => movie.id == this.movieId
-      );
-    },
     toHoursAndMinutes(timeInMinutes) {
       return `${Math.floor(timeInMinutes / 60)}h ${timeInMinutes % 60} min`;
     },
-  },
-
-  beforeMount() {
-    this.movieDetails();
   },
 };
 </script>

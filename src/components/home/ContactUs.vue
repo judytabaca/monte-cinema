@@ -31,7 +31,12 @@ export default {
   align-items: center;
 
   h1 {
-    margin: 3em auto;
+    margin: 2em auto;
+    font-family: "Eczar";
+    font-size: 64px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: $tuna;
   }
 
   &__address {
@@ -62,6 +67,10 @@ export default {
 
     &__address {
       padding: 1em;
+    }
+
+    h1 {
+      font-size: 40px;
     }
   }
 }

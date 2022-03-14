@@ -31,6 +31,7 @@ export default {
     line-height: 108%;
     letter-spacing: -0.01em;
     min-width: 600px;
+    font-family: "Eczar";
   }
   &__hi {
     color: $tuna;

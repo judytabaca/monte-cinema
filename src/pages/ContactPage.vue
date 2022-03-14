@@ -5,7 +5,8 @@
       <div class="contact-page__image">
         <img src="@/assets/img/map.png" alt="map" />
       </div>
-      <div class="contact-page__address">
+      <AddressCard />
+      <!-- <div class="contact-page__address">
         <img src="@/assets/img/pinlocation.svg" alt="location pin icon" />
         <p>
           Monterail Sp. z o.o. <br />
@@ -17,7 +18,7 @@
         <p>hello@monterail.com</p>
         <img src="@/assets/img/phoneicon.svg" alt="phone icon" />
         <p>+48 533 600 136</p>
-      </div>
+      </div> -->
       <div class="contact-page__social">
         <img src="@/assets/img/social-icons/twitter.svg" alt="twitter" />
         <img src="@/assets/img/social-icons/facebook.svg" alt="facebok icon" />
@@ -35,8 +36,10 @@
 </template>
 
 <script>
+import AddressCard from "@/components/contact/AddressCard.vue";
 export default {
   name: "ContactPage",
+  components: { AddressCard },
 };
 </script>
 
@@ -63,13 +66,14 @@ h1 {
     }
   }
 
-  &__address {
+  .address-card {
     display: grid;
     grid-template-columns: 32px 300px;
     grid-template-rows: 130px 30px 30px;
     gap: 2.5em;
     width: 100%;
     margin: auto 0;
+    padding: 0;
     padding-left: 4em;
     font-size: 18px;
     font-weight: 400;
@@ -77,6 +81,7 @@ h1 {
     line-height: 32px;
     letter-spacing: 0.015em;
     color: $tuna;
+    border-radius: 0;
   }
 
   &__social {
@@ -127,7 +132,7 @@ h1 {
       }
     }
 
-    &__address {
+    .address-card {
       background-color: $input-background;
       padding-top: 2em;
       padding-bottom: 2em;

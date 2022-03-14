@@ -1,7 +1,8 @@
 <template>
   <div class="contact-us">
     <h1>Contact Us</h1>
-    <div class="contact-us__address">
+    <AddressCard />
+    <!-- <div class="contact-us__address">
       <img src="@/assets/img/pinlocation.svg" alt="location pin icon" />
       <p>
         Monterail Sp. z o.o. <br />
@@ -13,13 +14,15 @@
       <p>hello@monterail.com</p>
       <img src="@/assets/img/phoneicon.svg" alt="phone icon" />
       <p>+48 533 600 136</p>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
+import AddressCard from "@/components/contact/AddressCard.vue";
 export default {
   name: "ContactUs",
+  components: { AddressCard },
 };
 </script>
 

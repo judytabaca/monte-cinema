@@ -46,6 +46,8 @@ export default {
 .movie-page {
   display: flex;
   margin-top: 4.5em;
+  width: 100%;
+  height: 100%;
 
   &__description {
     width: 50%;
@@ -68,8 +70,8 @@ export default {
     }
   }
   &__image {
-    width: 621px;
-    height: 289px;
+    width: 50%;
+    height: 100%;
     aspect-ratio: 16/9;
 
     img {

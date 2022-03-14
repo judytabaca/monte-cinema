@@ -29,3 +29,22 @@
     color: $jumbo;
   }
 }
+
+/* Movies genre button */
+@mixin genre-button {
+  display: inline-block;
+  background-color: $wisp-pink;
+  color: $bittersweet;
+  border-radius: 24px;
+  padding: 0.5em 0.9em;
+}
+
+/* Movies time&length */
+@mixin time-info {
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  color: $jumbo;
+  margin: 15px 0;
+}

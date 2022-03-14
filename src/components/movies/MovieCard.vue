@@ -1,12 +1,12 @@
 <template>
   <div class="movie__wrapper">
-    <h2>{{ title }}</h2>
-    <p>{{ toHoursAndMinutes(length) }}</p>
+    <h2>{{ movie.title }}</h2>
+    <p>{{ toHoursAndMinutes(movie.length) }}</p>
     <!-- <p>{{ length }}</p> -->
     <div class="image__wrapper">
-      <img :src="img" />
+      <img :src="movie.poster_url" />
     </div>
-    <p>{{ genre }}</p>
+    <p>{{ movie.genre.name }}</p>
   </div>
 </template>
 
@@ -14,20 +14,8 @@
 export default {
   name: "MovieCard",
   props: {
-    title: {
-      type: String,
-      default: "movie",
-    },
-    genre: {
-      type: String,
-      default: "genre",
-    },
-    img: {
-      type: String,
-      default: "",
-    },
-    length: {
-      type: Number,
+    movie: {
+      type: Object,
       default: null,
     },
   },

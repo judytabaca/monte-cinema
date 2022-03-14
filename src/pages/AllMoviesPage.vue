@@ -1,5 +1,5 @@
 <template>
-  <div class="page-title">
+  <div class="movies-page">
     <h1>All the movies</h1>
     <div class="movie-filters">
       <SearchInput v-model="search" />
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.page-title {
+.movies-page {
   text-align: left;
 
   .movie-filters {
@@ -57,7 +57,7 @@ export default {
 }
 
 @include md {
-  .page-title {
+  .movies-page {
     .movie-filters {
       grid-template-columns: 2fr 1fr;
 
@@ -69,7 +69,7 @@ export default {
 }
 
 @include sm {
-  .page-title {
+  .movies-page {
     .movie-filters {
       grid-template-columns: 1fr;
 

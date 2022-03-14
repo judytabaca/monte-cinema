@@ -1,13 +1,6 @@
 <template>
   <div class="movie-list">
-    <MovieCard
-      v-for="movie in moviesByCategory"
-      :key="movie.id"
-      :title="movie.title"
-      :img="movie.poster_url"
-      :genre="movie.genre.name"
-      :length="movie.length"
-    >
+    <MovieCard v-for="movie in moviesByCategory" :key="movie.id" :movie="movie">
     </MovieCard>
   </div>
 </template>
@@ -54,14 +47,14 @@ export default {
 <style lang="scss" scoped>
 .movie-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: auto;
   gap: 2em;
 }
 
 @include md {
   .movie-list {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 

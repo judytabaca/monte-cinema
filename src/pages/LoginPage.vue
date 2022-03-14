@@ -56,10 +56,8 @@ export default {
     }
   }
 }
-@media only screen and (max-width: 1024px) and (min-width: 650px) {
-}
 
-@media only screen and (max-width: 650px) {
+@include sm {
   .login-page {
     p {
       font-size: 40px;

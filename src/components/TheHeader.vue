@@ -10,7 +10,9 @@
         <router-link :to="{ name: 'AllMovies' }" class="header__navbar-options"
           >Movies</router-link
         >
-        <router-link to="#" class="header__navbar-options"
+        <router-link
+          :to="{ name: 'ScreeningsPage' }"
+          class="header__navbar-options"
           >Screenings</router-link
         >
         <router-link to="#" class="header__navbar-options"

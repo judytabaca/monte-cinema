@@ -1,6 +1,6 @@
 <template>
   <div class="movie-list">
-    <MovieCard v-for="movie in moviesByCategory" :key="movie.id" :movie="movie">
+    <MovieCard v-for="movie in searchedMovies" :key="movie.id" :movie="movie">
     </MovieCard>
   </div>
 </template>
@@ -27,18 +27,9 @@ export default {
   computed: {
     searchedMovies() {
       let re = new RegExp(this.search, "i");
-      return this.$store.getters.movieList.filter((movie) =>
+      return this.$store.getters.movieListByGenre.filter((movie) =>
         movie.title.match(re)
       );
-    },
-    moviesByCategory() {
-      const moviesByCategory = this.searchedMovies.filter(
-        (movie) => movie.genre.name === this.$store.getters.selectedGenre
-      );
-      return this.$store.getters.selectedGenre == "All Movies" ||
-        this.$store.getters.selectedGenre == ""
-        ? this.searchedMovies
-        : moviesByCategory;
     },
   },
 };

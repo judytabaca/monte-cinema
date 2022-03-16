@@ -16,10 +16,10 @@ export default {
     TheHeader,
   },
 
-  methods: {
-  },
+  methods: {},
   mounted() {
     this.$store.dispatch("getMovies");
+    this.$store.dispatch("getGenreList");
   },
 };
 </script>

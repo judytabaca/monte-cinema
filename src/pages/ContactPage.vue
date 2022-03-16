@@ -6,19 +6,6 @@
         <img src="@/assets/img/map.png" alt="map" />
       </div>
       <AddressCard />
-      <!-- <div class="contact-page__address">
-        <img src="@/assets/img/pinlocation.svg" alt="location pin icon" />
-        <p>
-          Monterail Sp. z o.o. <br />
-          ul. Oławska 27-29 <br />
-          50-123 Wrocław <br />
-          Poland
-        </p>
-        <img src="@/assets/img/emailicon.svg" alt="email icon" />
-        <p>hello@monterail.com</p>
-        <img src="@/assets/img/phoneicon.svg" alt="phone icon" />
-        <p>+48 533 600 136</p>
-      </div> -->
       <div class="contact-page__social">
         <img src="@/assets/img/social-icons/twitter.svg" alt="twitter" />
         <img src="@/assets/img/social-icons/facebook.svg" alt="facebok icon" />
@@ -67,20 +54,8 @@ h1 {
   }
 
   .address-card {
-    display: grid;
-    grid-template-columns: 32px 300px;
-    grid-template-rows: 130px 30px 30px;
-    gap: 2.5em;
-    width: 100%;
     margin: auto 0;
     padding: 0;
-    padding-left: 4em;
-    font-size: 18px;
-    font-weight: 400;
-    font-family: "Roboto Mono";
-    line-height: 32px;
-    letter-spacing: 0.015em;
-    color: $tuna;
     border-radius: 0;
   }
 

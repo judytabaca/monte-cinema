@@ -1,12 +1,12 @@
 <template>
   <div class="movie__wrapper">
-    <h2>{{ title }}</h2>
-    <p class="movie__time">{{ toHoursAndMinutes(length) }}</p>
+    <h2>{{ movie.title }}</h2>
+    <p class="movie__time">{{ toHoursAndMinutes(movie.length) }}</p>
     <!-- <p>{{ length }}</p> -->
     <div class="image__wrapper">
       <img :src="movie.poster_url" />
     </div>
-    <p class="movie__genre">{{ genre }}</p>
+    <p class="movie__genre">{{ movie.genre.name }}</p>
   </div>
 </template>
 
@@ -22,10 +22,6 @@ export default {
   methods: {
     toHoursAndMinutes(timeInMinutes) {
       return `${Math.floor(timeInMinutes / 60)}h ${timeInMinutes % 60} min`;
-    },
-    length: {
-      type: Number,
-      default: null,
     },
   },
 };

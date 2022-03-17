@@ -15,7 +15,10 @@ export default new Vuex.Store({
       return state.moviesRecord;
     },
     movieListByGenre: (state) => {
-      if (state.selectedGenre == "All Movies" || state.selectedGenre == "") {
+      if (
+        state.selectedGenre == "All Categories" ||
+        state.selectedGenre == ""
+      ) {
         return state.moviesRecord;
       }
       return state.moviesRecord.filter(

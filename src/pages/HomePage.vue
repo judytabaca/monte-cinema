@@ -2,13 +2,13 @@
   <div>
     <WelcomeCard />
     <ComingSoon />
-    <OnlineBooking />
+    <ContactUs />
   </div>
 </template>
 
 <script>
 import WelcomeCard from "../components/home/WelcomeCard.vue";
-import OnlineBooking from "../components/home/OnlineBooking.vue";
+import ContactUs from "../components/home/ContactUs.vue";
 import ComingSoon from "../components/home/ComingSoon.vue";
 
 export default {
@@ -16,7 +16,7 @@ export default {
   components: {
     WelcomeCard,
     ComingSoon,
-    OnlineBooking,
+    ContactUs,
   },
 };
 </script>

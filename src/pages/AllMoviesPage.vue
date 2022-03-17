@@ -70,6 +70,10 @@ export default {
 
 @include sm {
   .movies-page {
+    h1 {
+      font-size: 48px;
+      text-align: center;
+    }
     .movie-filters {
       grid-template-columns: 1fr;
 

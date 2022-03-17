@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 .address-card {
-  max-width: 600px;
+  max-width: 800px;
   max-height: 400px;
   display: grid;
   justify-content: center;

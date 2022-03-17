@@ -2,7 +2,7 @@
   <div class="breadcrumbs">
     <button
       class="breadcrumbs__link breadcrumbs__link--btn"
-      @click="$router.back()"
+      @click="$router.push('/')"
     >
       <div>
         <img src="@/assets/img/arrow-back.svg" />

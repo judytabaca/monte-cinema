@@ -7,6 +7,9 @@
 <script>
 export default {
   name: "ContactPage",
+  metaInfo: {
+    title: "Movies",
+  },
 };
 </script>
 

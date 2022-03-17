@@ -5,6 +5,9 @@
 <script>
 export default {
   name: "ScreeningsPage",
+  metaInfo: {
+    title: "Screenings",
+  },
 };
 </script>
 

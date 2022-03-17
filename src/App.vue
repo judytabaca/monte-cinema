@@ -12,12 +12,15 @@ import TheHeader from "./components/TheHeader.vue";
 
 export default {
   name: "App",
+  metaInfo: {
+    title: "Welcome",
+    titleTemplate: "%s | Monte Cinema",
+  },
   components: {
     TheHeader,
   },
 
-  methods: {
-  },
+  methods: {},
   mounted() {
     this.$store.dispatch("getMovies");
   },

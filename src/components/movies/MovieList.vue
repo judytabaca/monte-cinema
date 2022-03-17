@@ -3,9 +3,7 @@
     <MovieCard
       v-for="movie in $store.getters.movieList"
       :key="movie.id"
-      :title="movie.title"
-      :img="movie.poster_url"
-      :genre="movie.genre.name"
+      :movie="movie"
     >
     </MovieCard>
   </div>

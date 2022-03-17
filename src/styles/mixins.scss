@@ -1,3 +1,11 @@
+@mixin roboto-mono-700 {
+  font-family: Roboto, Mono;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  @content;
+}
+
 @mixin input-element {
   background-color: $grey-input;
   padding-left: 0.5em;

@@ -4,7 +4,7 @@
     <p class="movie__time">{{ toHoursAndMinutes(length) }}</p>
     <!-- <p>{{ length }}</p> -->
     <div class="image__wrapper">
-      <img :src="img" />
+      <img :src="movie.poster_url" />
     </div>
     <p class="movie__genre">{{ genre }}</p>
   </div>
@@ -14,26 +14,18 @@
 export default {
   name: "MovieCard",
   props: {
-    title: {
-      type: String,
-      default: "movie",
-    },
-    genre: {
-      type: String,
-      default: "genre",
-    },
-    img: {
-      type: String,
-      default: "",
-    },
-    length: {
-      type: Number,
+    movie: {
+      type: Object,
       default: null,
     },
   },
   methods: {
     toHoursAndMinutes(timeInMinutes) {
       return `${Math.floor(timeInMinutes / 60)}h ${timeInMinutes % 60} min`;
+    },
+    length: {
+      type: Number,
+      default: null,
     },
   },
 };

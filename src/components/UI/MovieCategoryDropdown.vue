@@ -7,7 +7,7 @@
     >
       <option
         class="dropdown-categories__options"
-        v-for="genre in ['All Categories', ...$store.getters.genreList]"
+        v-for="genre in movieCategories"
         :key="genre"
       >
         {{ genre }}
@@ -17,12 +17,14 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "MovieCategoryDropdown",
-  props: {
-    listOptions: {
-      type: Array,
-      default: null,
+  computed: {
+    ...mapGetters(["genreList"]),
+
+    movieCategories() {
+      return ["All Categories", ...this.genreList];
     },
   },
 };
@@ -33,12 +35,9 @@ export default {
   width: 100%;
 
   &__label {
-    font-family: Roboto, Mono;
+    @include roboto-mono-700;
     color: $bittersweet;
     text-transform: uppercase;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 18px;
     margin: 12px 0;
   }
 

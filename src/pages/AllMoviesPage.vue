@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BreadCrumbs>Movies</BreadCrumbs>
+    <BreadCrumbs backPath="/movie">Movies</BreadCrumbs>
     <h1>All Movies Page</h1>
     <MovieList />
   </div>

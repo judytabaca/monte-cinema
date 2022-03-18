@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BreadCrumbs :secondLevel="movieId">Movies</BreadCrumbs>
+    <BreadCrumbs backPath="/movies" :secondLevel="movieId">Movies</BreadCrumbs>
     <h1>Movie Details</h1>
     <h3>Movie ID: {{ movieId }}</h3>
   </div>

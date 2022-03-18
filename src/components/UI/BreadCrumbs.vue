@@ -1,9 +1,6 @@
 <template>
   <div class="breadcrumbs">
-    <button
-      class="breadcrumbs__link breadcrumbs__link--btn"
-      @click="$router.push('/')"
-    >
+    <button class="breadcrumbs__link breadcrumbs__link--btn" @click="goBack">
       <div>
         <img src="@/assets/img/arrow-back.svg" />
       </div>
@@ -11,7 +8,7 @@
     </button>
     <p
       class="breadcrumbs__link breadcrumbs__link--crumb"
-      @click="secondLevel ? $router.go(-1) : $router.go(0)"
+      @click="$router.push(backPath)"
     >
       <slot />
     </p>
@@ -27,10 +24,20 @@
 <script>
 export default {
   name: "BreadCrumbs",
+
   props: {
+    backPath: {
+      type: Object,
+      default: null,
+    },
     secondLevel: {
       type: String,
       default: null,
+    },
+  },
+  methods: {
+    goBack() {
+      window.history.go(-1);
     },
   },
   components: {},

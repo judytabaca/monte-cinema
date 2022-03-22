@@ -20,6 +20,7 @@ export default {
   name: "AllMoviesPage",
   metaInfo: {
     title: "Movies",
+  },
   data() {
     return {
       search: "",

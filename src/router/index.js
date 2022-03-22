@@ -1,4 +1,5 @@
 import VueRouter from "vue-router";
+
 import HomePage from "@/pages/HomePage.vue";
 import AllMovies from "@/pages/AllMoviesPage.vue";
 import ContactPage from "@/pages/ContactPage.vue";

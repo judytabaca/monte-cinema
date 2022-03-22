@@ -16,6 +16,8 @@ import MovieList from "../components/movies/MovieList.vue";
 
 export default {
   name: "AllMoviesPage",
+  metaInfo: {
+    title: "Movies",
   data() {
     return {
       search: "",

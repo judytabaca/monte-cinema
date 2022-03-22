@@ -1,12 +1,10 @@
 <template>
   <div class="movie__wrapper">
     <h2>{{ movie.title }}</h2>
-    <p class="movie__time">{{ toHoursAndMinutes(movie.length) }}</p>
-    <!-- <p>{{ length }}</p> -->
     <div class="image__wrapper">
       <img :src="movie.poster_url" />
     </div>
-    <p class="movie__genre">{{ movie.genre.name }}</p>
+    <p>{{ movie.genre.name }}</p>
   </div>
 </template>
 

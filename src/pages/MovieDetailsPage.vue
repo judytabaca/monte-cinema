@@ -8,6 +8,9 @@
 <script>
 export default {
   name: "MovieDetailsPage",
+  metaInfo() {
+    return { title: this.movieId };
+  },
   props: {
     movieId: {
       type: String,

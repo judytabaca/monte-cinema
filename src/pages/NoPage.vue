@@ -7,6 +7,9 @@
 <script>
 export default {
   name: "NoPage",
+  metaInfo: {
+    title: "Error",
+  },
 };
 </script>
 

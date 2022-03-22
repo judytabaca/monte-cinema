@@ -26,6 +26,9 @@
 import AddressCard from "@/components/contact/AddressCard.vue";
 export default {
   name: "ContactPage",
+  metaInfo: {
+    title: "Contact Us",
+  },
   components: { AddressCard },
 };
 </script>

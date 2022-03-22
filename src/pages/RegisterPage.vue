@@ -11,6 +11,9 @@
 import RegisterCard from "../components/register/RegisterCard.vue";
 export default {
   name: "RegisterPage",
+  metaInfo: {
+    title: "Register",
+  },
   components: { RegisterCard },
 };
 </script>

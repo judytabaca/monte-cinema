@@ -14,6 +14,9 @@ import LoginCard from "../components/LoginCard.vue";
 
 export default {
   name: "LoginPage",
+  metaInfo: {
+    title: "Login",
+  },
   components: { LoginCard },
 };
 </script>

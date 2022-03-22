@@ -1,5 +1,6 @@
 <template>
   <div>
+    <BreadCrumbs>Contact Us</BreadCrumbs>
     <h1>Contact Us</h1>
     <div class="contact-page">
       <div class="contact-page__image">
@@ -24,12 +25,14 @@
 
 <script>
 import AddressCard from "@/components/contact/AddressCard.vue";
+import BreadCrumbs from "@/components/UI/BreadCrumbs.vue";
+
 export default {
   name: "ContactPage",
   metaInfo: {
     title: "Contact Us",
   },
-  components: { AddressCard },
+  components: { AddressCard, BreadCrumbs },
 };
 </script>
 

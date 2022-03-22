@@ -6,10 +6,6 @@
 export default {
   name: "MainButton",
   props: {
-    buttonText: {
-      type: String,
-      default: "Click Me!",
-    },
     buttonType: {
       type: String,
       default: "primary",
@@ -48,15 +44,7 @@ export default {
     color: $snow-white;
     border: 5px solid $cherry-red;
     background-color: $cherry-red;
-  }
 
-  &--secondary {
-    color: $cherry-red;
-    border: 5px solid $snow-white;
-    background-color: $snow-white;
-  }
-
-  &--primary {
     &:hover {
       background-color: $totem-pole;
       border: 5px solid $totem-pole;
@@ -66,6 +54,12 @@ export default {
       background-color: $totem-pole;
       border: 5px solid $bittersweet;
     }
+  }
+
+  &--secondary {
+    color: $cherry-red;
+    border: 5px solid $snow-white;
+    background-color: $snow-white;
   }
 
   &:disabled {

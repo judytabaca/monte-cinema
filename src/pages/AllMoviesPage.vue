@@ -1,5 +1,6 @@
 <template>
   <div class="movies-page">
+    <BreadCrumbs backPath="/movie">Movies</BreadCrumbs>
     <h1>All the movies</h1>
     <div class="movie-filters">
       <SearchInput v-model="search" />
@@ -13,6 +14,7 @@
 import SearchInput from "../components/UI/SearchInput.vue";
 import MovieCategoryDropdown from "../components/UI/MovieCategoryDropdown.vue";
 import MovieList from "../components/movies/MovieList.vue";
+import BreadCrumbs from "@/components/UI/BreadCrumbs.vue";
 
 export default {
   name: "AllMoviesPage",
@@ -25,6 +27,7 @@ export default {
   },
   components: {
     MovieList,
+    BreadCrumbs,
     SearchInput,
     MovieCategoryDropdown,
   },

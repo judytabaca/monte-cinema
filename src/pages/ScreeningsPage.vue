@@ -10,6 +10,9 @@ export default {
   components: {
     BreadCrumbs,
   },
+  metaInfo: {
+    title: "Screenings",
+  },
 };
 </script>
 

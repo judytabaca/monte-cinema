@@ -11,6 +11,9 @@ import BreadCrumbs from "@/components/UI/BreadCrumbs.vue";
 
 export default {
   name: "MovieDetailsPage",
+  metaInfo() {
+    return { title: this.movieId };
+  },
   props: {
     movieId: {
       type: String,

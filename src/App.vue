@@ -23,6 +23,7 @@ export default {
   methods: {},
   mounted() {
     this.$store.dispatch("getMovies");
+    this.$store.dispatch("getGenreList");
   },
 };
 </script>

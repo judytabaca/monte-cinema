@@ -1,7 +1,7 @@
 <template>
   <div class="screening-page">
     <h1 class="screening-page__title">Screenings</h1>
-    <h2 class="screening-page__date">{{ selectedDay }}</h2>
+    <h2 class="screening-page__date">{{ headerDate }}</h2>
     <div>
       <div class="screening-page__controls">
         <DayTabs @selection="setSelectedDay" />
@@ -37,7 +37,21 @@ export default {
       let date = new Date();
       return date.toISOString().substring(0, 10);
     },
-
+    headerDate() {
+      var days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      const day = new Date(this.selectedDay);
+      const dayName = days[day.getDay()];
+      const date = new Date(this.selectedDay).toLocaleDateString();
+      return `${dayName}, ${date}`;
+    },
     moviesOnTheDay() {
       return [...new Set(this.seancesOnTheDay.map((seance) => seance.movie))];
     },

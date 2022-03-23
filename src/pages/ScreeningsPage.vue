@@ -3,17 +3,7 @@
     <h1>Screenings</h1>
     <h2>{{ selectedDay }}</h2>
     <div>
-      <button
-        class="day-tabs"
-        v-for="day in daysList"
-        :key="day.id"
-        @click="setSelectedDay(day.date)"
-      >
-        {{ day.name }}
-      </button>
-      <button class="day-tabs__calendar">
-        <img src="@/assets/img/calendaricon.svg" alt="calendar-icon" />
-      </button>
+      <DayTabs @selection="setSelectedDay" />
       <hr />
       <div v-for="movieId in moviesOnTheDay" :key="`movie_${movieId}`">
         <p>
@@ -36,6 +26,8 @@
 <script>
 import apiSeancesService from "@/services/api/apiSeancesService";
 
+import DayTabs from "@/components/UI/DaysTabs.vue";
+
 export default {
   name: "ScreeningsPage",
   data() {
@@ -45,29 +37,11 @@ export default {
     };
   },
   computed: {
-    todayDate() {
-      return new Date();
-    },
     todayDaySelection() {
       let date = new Date();
       return date.toISOString().substring(0, 10);
     },
-    daysList() {
-      let daysList = [];
-      daysList.push({ id: 1, date: new Date(), name: "Today" });
-      for (let i = 1; i < 6; i++) {
-        const date = new Date(
-          this.todayDate.setDate(this.todayDate.getDate() + 1)
-        );
 
-        daysList.push({
-          id: i + 1,
-          date: date,
-          name: date.toLocaleDateString("en-US", { weekday: "short" }),
-        });
-      }
-      return daysList;
-    },
     moviesOnTheDay() {
       return [...new Set(this.seancesOnTheDay.map((seance) => seance.movie))];
     },
@@ -79,6 +53,7 @@ export default {
   },
   methods: {
     setSelectedDay(date) {
+      console.log(date);
       this.selectedDay = date.toISOString().substring(0, 10);
     },
     async getSeancesList() {
@@ -99,6 +74,9 @@ export default {
   mounted() {
     this.selectedDay = this.todayDaySelection;
   },
+  components: {
+    DayTabs,
+  },
 };
 </script>
 
@@ -111,25 +89,5 @@ h1 {
   letter-spacing: -0.01em;
   color: $tuna;
   margin: 32px 0px;
-}
-
-.day-tabs,
-.day-tabs__calendar {
-  width: 136px;
-  height: 56px;
-  background: transparent;
-  display: inline-block;
-  cursor: pointer;
-  text-decoration: none;
-  border-radius: 64px;
-  transition: background-color 0.4s, border-color 0.2s;
-  margin: 0px 3px;
-
-  &:focus,
-  &:active,
-  &:hover {
-    color: $snow-white;
-    background-color: $tuna;
-  }
 }
 </style>

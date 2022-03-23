@@ -1,14 +1,18 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import apiMoviesService from "../services/api/apiMoviesService";
+import * as authApi from "@/services/api/apiAuthService";
+import { setAuthHeader, removeAuthHeader } from "@/services/api/client";
 
 Vue.use(Vuex);
+const authHeaderStorageKey = "LS_AUTH_HEADER";
 
 export default new Vuex.Store({
   state: {
     moviesRecord: [],
     genreList: [],
     selectedGenre: "",
+    authHeader: null,
   },
   getters: {
     movieList: (state) => {
@@ -31,6 +35,7 @@ export default new Vuex.Store({
     selectedGenre: (state) => {
       return state.selectedGenre;
     },
+    isLoggedIn: (state) => !!state.authHeader,
   },
   mutations: {
     setMovies(state, payload) {
@@ -41,6 +46,13 @@ export default new Vuex.Store({
     },
     setSelectedGenre(state, payload) {
       state.selectedGenre = payload;
+    },
+    setUserData(state, { authHeader }) {
+      state.authHeader = authHeader;
+      localStorage.setItem(authHeaderStorageKey, authHeader);
+    },
+    resetUserData(state) {
+      state.authHeader = null;
     },
   },
   actions: {
@@ -61,6 +73,32 @@ export default new Vuex.Store({
         commit("setGenreList", uniqueGenres);
       } catch (err) {
         console.log(err);
+      }
+    },
+    async login({ commit, getters, dispatch }, credentials) {
+      if (getters.isLoggedIn) await dispatch("logout");
+      const response = await authApi.login(credentials);
+      const authHeader = response.headers.authorization;
+      setAuthHeader(authHeader);
+      commit("setUserData", { authHeader });
+    },
+    async logout({ commit, getters }) {
+      if (!getters.isLoggedIn) return;
+      // TODO: API action
+      localStorage.removeItem(authHeaderStorageKey);
+      commit("resetUserData");
+      removeAuthHeader();
+    },
+    restoreUserData({ commit }) {
+      try {
+        const authHeader = localStorage.getItem(authHeaderStorageKey);
+
+        if (authHeader) {
+          setAuthHeader(authHeader);
+          commit("setUserData", { authHeader });
+        }
+      } catch {
+        // ignore error
       }
     },
   },

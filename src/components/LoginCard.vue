@@ -1,6 +1,6 @@
 <template>
   <div class="login-card-wrapper">
-    <form @submit.prevent="submitForm" novalidate>
+    <form @submit.prevent="onSubmit" novalidate>
       <div class="login-card-wrapper__form form-field">
         <MainInput v-model="email" />
         <PasswordInput v-model="password" />
@@ -8,11 +8,9 @@
           <router-link :to="{ name: 'RegisterPage' }">
             <MainButton button-type="secondary">Register instead</MainButton>
           </router-link>
-          <router-link to="#">
-            <MainButton button-type="primary" :disabled="!isFormValid"
-              >Log In</MainButton
-            >
-          </router-link>
+          <MainButton button-type="primary" :disabled="!isFormValid"
+            >Log In</MainButton
+          >
         </div>
       </div>
     </form>
@@ -36,8 +34,17 @@ export default {
       console.log("user email: ", this.email);
       console.log("user password: ", this.password);
     },
-    submitForm() {
-      this.loginUser();
+    async onSubmit() {
+      try {
+        await this.$store.dispatch("login", {
+          email: this.email,
+          password: this.password,
+        });
+        this.$router.push("/");
+      } catch (error) {
+        alert(error);
+        console.error(error);
+      }
     },
   },
   computed: {

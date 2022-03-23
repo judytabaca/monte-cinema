@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <MovieCard
-      v-for="movie in $store.getters.movieList"
-      :key="movie.id"
-      :movie="movie"
-    >
+  <div class="movie-list">
+    <MovieCard v-for="movie in searchedMovies" :key="movie.id" :movie="movie">
     </MovieCard>
   </div>
 </template>

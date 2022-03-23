@@ -1,6 +1,8 @@
 <template>
   <div class="movie__wrapper">
     <h2>{{ movie.title }}</h2>
+    <p>{{ toHoursAndMinutes(movie.length) }}</p>
+    <!-- <p>{{ length }}</p> -->
     <div class="image__wrapper">
       <img :src="movie.poster_url" />
     </div>
@@ -34,15 +36,6 @@ export default {
     0px 1.59602px 5.18708px rgba(0, 0, 0, 0.0161557);
   border-radius: 8px;
 
-  .movie__time {
-    font-family: "Roboto";
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 16px;
-    color: $jumbo;
-    margin: 15px 0;
-  }
-
   h2 {
     font-family: Roboto;
     font-weight: 700;
@@ -65,14 +58,6 @@ export default {
     }
   }
 
-  .movie__genre {
-    display: inline-block;
-    background-color: $wisp-pink;
-    color: $bittersweet;
-    border-radius: 24px;
-    padding: 0.5em 0.9em;
-  }
-
   p {
     font-family: Roboto;
     font-weight: 400;
@@ -84,13 +69,13 @@ export default {
   }
 }
 
-@include md {
+@media only screen and (max-width: 1024px) and (min-width: 450px) {
   .movie__wrapper {
     flex-grow: 1;
   }
 }
 
-@include sm {
+@media only screen and (max-width: 450px) {
   .movie__wrapper {
     width: 100%;
     padding: 20px;

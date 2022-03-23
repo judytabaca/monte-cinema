@@ -1,6 +1,5 @@
 <template>
   <div class="movies-page">
-    <BreadCrumbs backPath="/movie">Movies</BreadCrumbs>
     <h1>All the movies</h1>
     <div class="movie-filters">
       <SearchInput v-model="search" />
@@ -14,13 +13,9 @@
 import SearchInput from "../components/UI/SearchInput.vue";
 import MovieCategoryDropdown from "../components/UI/MovieCategoryDropdown.vue";
 import MovieList from "../components/movies/MovieList.vue";
-import BreadCrumbs from "@/components/UI/BreadCrumbs.vue";
 
 export default {
   name: "AllMoviesPage",
-  metaInfo: {
-    title: "Movies",
-  },
   data() {
     return {
       search: "",
@@ -28,7 +23,6 @@ export default {
   },
   components: {
     MovieList,
-    BreadCrumbs,
     SearchInput,
     MovieCategoryDropdown,
   },
@@ -76,10 +70,6 @@ export default {
 
 @include sm {
   .movies-page {
-    h1 {
-      font-size: 48px;
-      text-align: center;
-    }
     .movie-filters {
       grid-template-columns: 1fr;
 

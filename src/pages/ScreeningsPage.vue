@@ -1,23 +1,19 @@
 <template>
-  <div>
-    <h1>Screenings</h1>
-    <h2>{{ selectedDay }}</h2>
+  <div class="screening-page">
+    <h1 class="screening-page__title">Screenings</h1>
+    <h2 class="screening-page__date">{{ selectedDay }}</h2>
     <div>
-      <DayTabs @selection="setSelectedDay" />
-      <hr />
-      <div v-for="movieId in moviesOnTheDay" :key="`movie_${movieId}`">
-        <p>
-          {{
-            $store.getters.movieList.filter((movie) => movie.id == movieId)[0]
-              .title
-          }}
-        </p>
-        <p
-          v-for="seance in seancesByMovie(movieId)"
-          :key="`seance_${seance.id}`"
-        >
-          {{ seance.datetime.substring(11, 16) }}
-        </p>
+      <div class="screening-page__controls">
+        <DayTabs @selection="setSelectedDay" />
+      </div>
+
+      <div class="seances-list">
+        <SeanceCard
+          v-for="movieId in moviesOnTheDay"
+          :key="`movie_${movieId}`"
+          :movieId="movieId"
+          :seancesByMovie="seancesByMovie(movieId)"
+        />
       </div>
     </div>
   </div>
@@ -25,7 +21,7 @@
 
 <script>
 import apiSeancesService from "@/services/api/apiSeancesService";
-
+import SeanceCard from "@/components/seances/SeanceCard.vue";
 import DayTabs from "@/components/UI/DaysTabs.vue";
 
 export default {
@@ -76,18 +72,39 @@ export default {
   },
   components: {
     DayTabs,
+    SeanceCard,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-h1 {
-  font-family: "Eczar";
-  font-weight: 600;
-  font-size: 80px;
-  line-height: 82px;
-  letter-spacing: -0.01em;
-  color: $tuna;
-  margin: 32px 0px;
+.screening-page {
+  &__controls {
+    margin-bottom: 50px;
+  }
+
+  &__title,
+  &__date {
+    font-family: "Eczar";
+    font-weight: 600;
+    font-size: 80px;
+    line-height: 82px;
+    letter-spacing: -0.01em;
+    color: $tuna;
+    margin: 32px 0px;
+  }
+
+  &__date {
+    color: $jumbo;
+    line-height: 20px;
+    margin-bottom: 50px;
+  }
+
+  .seances-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
 </style>

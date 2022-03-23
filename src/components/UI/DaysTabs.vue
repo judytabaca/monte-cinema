@@ -47,16 +47,21 @@ export default {
 
   &-tabs,
   &-tabs__calendar {
-    width: 100px;
-    height: 40px;
+    width: 136px;
+    height: 56px;
     background: transparent;
     border: 2px solid $tuna;
     display: inline-block;
     cursor: pointer;
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 64px;
     transition: background-color 0.4s, border-color 0.2s;
-    margin: 0px 3px;
+    margin: 0px 10px;
+    font-family: "Roboto Mono";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
 
     &:focus,
     &:active,

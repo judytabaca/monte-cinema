@@ -28,6 +28,7 @@
             $store.getters.movieList.filter((movie) => movie.id == movieId)[0]
               .length
           }}
+          min
         </span>
       </div>
       <ul class="seance-card__details__list">
@@ -102,7 +103,13 @@ export default {
       margin: 10px 35px 0 0;
     }
 
-    __info__time {
+    &__info__time {
+      font-family: "Roboto";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 14px;
+      line-height: 16px;
+      color: $jumbo;
     }
 
     &__list {

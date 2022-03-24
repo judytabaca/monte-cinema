@@ -1,33 +1,18 @@
 <template>
   <div class="seance-card">
     <div class="seance-card__poster">
-      <img
-        :src="
-          $store.getters.movieList.filter((movie) => movie.id == movieId)[0]
-            .poster_url
-        "
-        alt="poster"
-      />
+      <img :src="matchedMovie(movieId).poster_url" alt="poster" />
     </div>
     <div class="seance-card__details">
       <h3>
-        {{
-          $store.getters.movieList.filter((movie) => movie.id == movieId)[0]
-            .title
-        }}
+        {{ matchedMovie(movieId).title }}
       </h3>
       <div class="seance-card__details__info">
         <span class="seance-card__details__info__genre">
-          {{
-            $store.getters.movieList.filter((movie) => movie.id == movieId)[0]
-              .genre.name
-          }}
+          {{ matchedMovie(movieId).genre.name }}
         </span>
         <span class="seance-card__details__info__time">
-          {{
-            $store.getters.movieList.filter((movie) => movie.id == movieId)[0]
-              .length
-          }}
+          {{ matchedMovie(movieId).length }}
           min
         </span>
       </div>
@@ -37,7 +22,7 @@
           :key="`seance_${seance.id}`"
           class="seance-card__details__list__item"
         >
-          {{ seance.datetime.substring(11, 16) }}
+          {{ seanceTime(seance) }}
         </li>
       </ul>
     </div>
@@ -55,6 +40,14 @@ export default {
     seancesByMovie: {
       type: Array,
       default: null,
+    },
+  },
+  methods: {
+    matchedMovie(movieId) {
+      return this.$store.getters.movieList.find((movie) => movie.id == movieId);
+    },
+    seanceTime(seance) {
+      return seance.datetime.substring(11, 16);
     },
   },
 };
@@ -83,7 +76,7 @@ export default {
   &__details {
     margin-left: 40px;
     h3 {
-      ffont-family: "Roboto";
+      font-family: "Roboto";
       font-style: normal;
       font-weight: 700;
       font-size: 24px;

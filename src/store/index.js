@@ -8,7 +8,7 @@ export default new Vuex.Store({
   state: {
     moviesRecord: [],
     genreList: [],
-    selectedGenre: "",
+    selectedGenre: "All Categories",
   },
   getters: {
     movieList: (state) => {

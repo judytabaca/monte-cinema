@@ -14,17 +14,13 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import MovieCard from "./MovieCard.vue";
 
 export default {
   name: "MovieList",
   components: {
     MovieCard,
-  },
-  data() {
-    return {
-      selectedGenre: "",
-    };
   },
   props: {
     search: {
@@ -33,18 +29,16 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(["movieList", "selectedGenre"]),
     searchedMovies() {
       let re = new RegExp(this.search, "i");
-      return this.$store.getters.movieList.filter((movie) =>
-        movie.title.match(re)
-      );
+      return this.movieList.filter((movie) => movie.title.match(re));
     },
     moviesByCategory() {
       const moviesByCategory = this.searchedMovies.filter(
-        (movie) => movie.genre.name === this.$store.getters.selectedGenre
+        (movie) => movie.genre.name === this.selectedGenre
       );
-      return this.$store.getters.selectedGenre == "All Movies" ||
-        this.$store.getters.selectedGenre == ""
+      return this.selectedGenre == "All Categories"
         ? this.searchedMovies
         : moviesByCategory;
     },

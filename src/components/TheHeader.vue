@@ -29,7 +29,7 @@
       </ul>
       <div class="header__buttons">
         <template v-if="isLoggedIn">
-          <MainButton button-type="primary" :callback="logout"
+          <MainButton button-type="primary" @clicked="logout"
             >Logout</MainButton
           >
         </template>

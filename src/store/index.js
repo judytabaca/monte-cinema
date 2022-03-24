@@ -84,7 +84,7 @@ export default new Vuex.Store({
     },
     async logout({ commit, getters }) {
       if (!getters.isLoggedIn) return;
-      // TODO: API action
+      authApi.logout();
       localStorage.removeItem(authHeaderStorageKey);
       commit("resetUserData");
       removeAuthHeader();

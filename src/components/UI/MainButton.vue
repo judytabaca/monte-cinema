@@ -1,5 +1,5 @@
 <template>
-  <button :disabled="disabled" :class="buttonClasses" @click="callback">
+  <button :disabled="disabled" :class="buttonClasses" @click="$emit('clicked')">
     <slot />
   </button>
 </template>
@@ -15,10 +15,6 @@ export default {
     disabled: {
       type: Boolean,
       default: false,
-    },
-    callback: {
-      type: Function,
-      default: () => {},
     },
   },
   computed: {

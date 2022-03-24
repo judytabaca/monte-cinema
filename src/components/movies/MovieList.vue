@@ -38,7 +38,7 @@ export default {
       const moviesByCategory = this.searchedMovies.filter(
         (movie) => movie.genre.name === this.selectedGenre
       );
-      return this.selectedGenre == "All Categories"
+      return this.selectedGenre === "All Categories"
         ? this.searchedMovies
         : moviesByCategory;
     },

@@ -30,19 +30,25 @@
         </li>
       </ul>
       <div class="header__buttons">
-        <router-link :to="{ name: 'RegisterPage' }">
-          <MainButton button-type="secondary">Register</MainButton>
-        </router-link>
-        <router-link :to="{ name: 'LoginPage' }">
-          <MainButton button-type="primary">Login</MainButton>
-        </router-link>
-        <div class="menu__toggle">
+        <template v-if="isLoggedIn">
+          <MainButton button-type="primary" @click="logout">Logout</MainButton>
+        </template>
+        <template v-else>
+          <router-link :to="{ name: 'RegisterPage' }">
+            <MainButton button-type="secondary">Register</MainButton>
+          </router-link>
+          <router-link :to="{ name: 'LoginPage' }">
+            <MainButton button-type="primary">Login</MainButton>
+          </router-link>
+        </template>
+        <!-- TODO: mobile menu -->
+        <!-- <div class="menu__toggle">
           <div>
             <div class="line"></div>
             <div class="line"></div>
             <div class="line"></div>
           </div>
-        </div>
+        </div> -->
       </div>
     </template>
     <template v-if="isLogin || isRegister">
@@ -62,6 +68,14 @@ export default {
     },
     isRegister() {
       return this.$route.name === "RegisterPage";
+    },
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
     },
   },
   components: {

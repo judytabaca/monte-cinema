@@ -14,6 +14,9 @@ import LoginCard from "../components/LoginCard.vue";
 
 export default {
   name: "LoginPage",
+  metaInfo: {
+    title: "Login",
+  },
   components: { LoginCard },
 };
 </script>
@@ -31,6 +34,7 @@ export default {
     line-height: 108%;
     letter-spacing: -0.01em;
     min-width: 600px;
+    font-family: "Eczar";
   }
   &__hi {
     color: $tuna;
@@ -56,10 +60,8 @@ export default {
     }
   }
 }
-@media only screen and (max-width: 1024px) and (min-width: 650px) {
-}
 
-@media only screen and (max-width: 650px) {
+@include sm {
   .login-page {
     p {
       font-size: 40px;

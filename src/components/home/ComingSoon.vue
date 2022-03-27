@@ -9,9 +9,7 @@
       <MovieCard
         v-for="movie in movies"
         :key="movie.title"
-        :title="movie.title"
-        :img="movie.img"
-        :genre="movie.genre.name"
+        :movie="movie"
       ></MovieCard>
     </div>
   </div>
@@ -20,10 +18,6 @@
 <script>
 import MovieCard from "../movies/MovieCard.vue";
 
-import imgPredator from "@/assets/img/predator.png";
-import imgCommando from "@/assets/img/commando.png";
-import imgTerminator from "@/assets/img/terminator.png";
-
 export default {
   name: "ComingSoon",
   data() {
@@ -31,30 +25,33 @@ export default {
       movies: [
         {
           title: "Predator",
-          img: imgPredator,
+          poster_url: "img/predator.png",
           description:
             "A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior.",
           genre: {
             name: "Action",
           },
+          length: 87,
         },
         {
           title: "Commando",
-          img: imgCommando,
+          poster_url: "img/commando.png",
           description:
             "A retired Special Forces colonel tries to save his daughter, who was abducted by his former subordinate.",
           genre: {
             name: "Action",
           },
+          length: 86,
         },
         {
           title: "Terminator 2",
-          img: imgTerminator,
+          poster_url: "img/terminator.png",
           description:
             "A team of commandos on a mission in a Central American jungle find themselves hunted by an extraterrestrial warrior.",
           genre: {
             name: "Action",
           },
+          length: 85,
         },
       ],
     };

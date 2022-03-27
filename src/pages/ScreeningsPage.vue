@@ -1,19 +1,22 @@
 <template>
-  <div class="screening-page">
-    <h1 class="screening-page__title">Screenings</h1>
-    <h2 class="screening-page__date">{{ headerDate }}</h2>
-    <div>
-      <div class="screening-page__controls">
-        <DayTabs @selection="setSelectedDay" />
-      </div>
+  <div>
+    <BreadCrumbs>Screenings</BreadCrumbs>
+    <div class="screening-page">
+      <h1 class="screening-page__title">Screenings</h1>
+      <h2 class="screening-page__date">{{ headerDate }}</h2>
+      <div>
+        <div class="screening-page__controls">
+          <DayTabs @selection="setSelectedDay" />
+        </div>
 
-      <div class="seances-list">
-        <SeanceCard
-          v-for="movieId in moviesOnTheDay"
-          :key="`movie_${movieId}`"
-          :movieId="movieId"
-          :seancesByMovie="seancesByMovie(movieId)"
-        />
+        <div class="seances-list">
+          <SeanceCard
+            v-for="movieId in moviesOnTheDay"
+            :key="`movie_${movieId}`"
+            :movieId="movieId"
+            :seancesByMovie="seancesByMovie(movieId)"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -21,6 +24,7 @@
 
 <script>
 import apiSeancesService from "@/services/api/apiSeancesService";
+import BreadCrumbs from "@/components/UI/BreadCrumbs.vue";
 import SeanceCard from "@/components/seances/SeanceCard.vue";
 import DayTabs from "@/components/UI/DaysTabs.vue";
 
@@ -84,9 +88,13 @@ export default {
   mounted() {
     this.selectedDay = this.todayDaySelection;
   },
+  metaInfo: {
+    title: "Screenings",
+  },
   components: {
     DayTabs,
     SeanceCard,
+    BreadCrumbs,
   },
 };
 </script>

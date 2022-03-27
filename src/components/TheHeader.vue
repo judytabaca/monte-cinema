@@ -6,19 +6,29 @@
       </router-link>
     </div>
     <template v-if="!isLogin && !isRegister">
-      <div class="header__navbar">
-        <router-link :to="{ name: 'AllMovies' }" class="header__navbar-options"
-          >Movies</router-link
-        >
-        <router-link
-          :to="{ name: 'ScreeningsPage' }"
-          class="header__navbar-options"
-          >Screenings</router-link
-        >
-        <router-link to="#" class="header__navbar-options"
-          >Contact us</router-link
-        >
-      </div>
+      <ul class="header__navbar">
+        <li>
+          <router-link
+            :to="{ name: 'AllMovies' }"
+            class="header__navbar-options"
+            >Movies</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            :to="{ name: 'ScreeningsPage' }"
+            class="header__navbar-options"
+            >Screenings</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            :to="{ name: 'ContactPage' }"
+            class="header__navbar-options"
+            >Contact us</router-link
+          >
+        </li>
+      </ul>
       <div class="header__buttons">
         <router-link :to="{ name: 'RegisterPage' }">
           <MainButton button-type="secondary">Register</MainButton>
@@ -63,10 +73,10 @@ export default {
 <style scoped lang="scss">
 .header {
   width: 100%;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 0px;
 
   .with-love {
     font-weight: 500;
@@ -78,12 +88,15 @@ export default {
     margin-top: 20px;
   }
 
-  &__navbar-options {
-    font-size: 18px;
-    line-height: 21px;
-    color: $jumbo;
-    justify-content: space-between;
-    margin: 0 30px;
+  &__navbar {
+    height: 100%;
+  }
+
+  &__navbar li {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 
     &:hover,
     &:active {
@@ -91,6 +104,14 @@ export default {
       color: $gray-abbey;
       box-shadow: inset 0px -4px 0px $cherry-red;
     }
+  }
+
+  &__navbar-options {
+    font-size: 18px;
+    line-height: 21px;
+    color: $jumbo;
+    justify-content: space-between;
+    margin: 0 30px;
   }
   &__buttons {
     display: flex;

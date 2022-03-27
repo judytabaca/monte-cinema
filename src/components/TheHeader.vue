@@ -15,7 +15,9 @@
           >
         </li>
         <li>
-          <router-link to="#" class="header__navbar-options"
+          <router-link
+            :to="{ name: 'ScreeningsPage' }"
+            class="header__navbar-options"
             >Screenings</router-link
           >
         </li>

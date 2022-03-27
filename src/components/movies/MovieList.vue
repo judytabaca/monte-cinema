@@ -5,10 +5,12 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
+import { Movie } from "@/store/index";
 import MovieCard from "./MovieCard.vue";
 
-export default {
+export default Vue.extend({
   name: "MovieList",
   components: {
     MovieCard,
@@ -25,14 +27,14 @@ export default {
     },
   },
   computed: {
-    searchedMovies() {
+    searchedMovies(): Array<Movie> {
       let re = new RegExp(this.search, "i");
-      return this.$store.getters.movieListByGenre.filter((movie) =>
+      return this.$store.getters.movieListByGenre.filter((movie: Movie) =>
         movie.title.match(re)
       );
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -1,8 +1,7 @@
 <template>
   <div class="movie__wrapper">
     <h2>{{ movie.title }}</h2>
-    <p>{{ toHoursAndMinutes(movie.length) }}</p>
-    <!-- <p>{{ length }}</p> -->
+    <p>{{ movieLength(movie.length) }}</p>
     <div class="image__wrapper">
       <img :src="movie.poster_url" />
     </div>
@@ -10,21 +9,25 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue, { PropType } from "vue";
+import toHoursAndMinutes from "@/utils/toHoursAndMinutes";
+import { Movie } from "@/store/index";
+
+export default Vue.extend({
   name: "MovieCard",
   props: {
     movie: {
-      type: Object,
+      type: Object as PropType<Movie>,
       default: null,
     },
   },
   methods: {
-    toHoursAndMinutes(timeInMinutes) {
-      return `${Math.floor(timeInMinutes / 60)}h ${timeInMinutes % 60} min`;
+    movieLength(time: number): string {
+      return toHoursAndMinutes(time);
     },
   },
-};
+});
 </script>
 
 <style scoped lang="scss">

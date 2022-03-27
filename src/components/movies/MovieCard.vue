@@ -1,16 +1,18 @@
 <template>
   <div class="movie__wrapper">
     <h2>{{ movie.title }}</h2>
-    <p>{{ toHoursAndMinutes(movie.length) }}</p>
+    <p class="movie__wrapper__time">{{ movieLength(movie.length) }}</p>
     <!-- <p>{{ length }}</p> -->
     <div class="image__wrapper">
       <img :src="movie.poster_url" />
     </div>
-    <p>{{ movie.genre.name }}</p>
+    <p class="movie__wrapper__genre">{{ movie.genre.name }}</p>
   </div>
 </template>
 
 <script>
+import toHoursAndMinutes from "@/utils/toHoursAndMinutes";
+
 export default {
   name: "MovieCard",
   props: {
@@ -20,8 +22,8 @@ export default {
     },
   },
   methods: {
-    toHoursAndMinutes(timeInMinutes) {
-      return `${Math.floor(timeInMinutes / 60)}h ${timeInMinutes % 60} min`;
+    movieLength(timeInMinutes) {
+      return toHoursAndMinutes(timeInMinutes);
     },
   },
 };

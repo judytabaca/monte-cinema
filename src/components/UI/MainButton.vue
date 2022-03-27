@@ -1,5 +1,5 @@
 <template>
-  <button :disabled="disabled" :class="buttonClasses" @click="$emit('clicked')">
+  <button :disabled="disabled" :class="buttonClasses" @click="click">
     <slot />
   </button>
 </template>
@@ -24,6 +24,11 @@ export default {
         { "button--primary": this.buttonType === "primary" },
         { "button--secondary": this.buttonType === "secondary" },
       ];
+    },
+  },
+  methods: {
+    click(event) {
+      this.$emit("click", event);
     },
   },
 };

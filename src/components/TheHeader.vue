@@ -29,9 +29,7 @@
       </ul>
       <div class="header__buttons">
         <template v-if="isLoggedIn">
-          <MainButton button-type="primary" @clicked="logout"
-            >Logout</MainButton
-          >
+          <MainButton button-type="primary" @click="logout">Logout</MainButton>
         </template>
         <template v-else>
           <router-link :to="{ name: 'RegisterPage' }">

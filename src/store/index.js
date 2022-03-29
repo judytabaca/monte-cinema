@@ -1,14 +1,12 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import apiMoviesService from "../services/api/apiMoviesService";
-
 Vue.use(Vuex);
-
 export default new Vuex.Store({
   state: {
     moviesRecord: [],
     genreList: [],
-    selectedGenre: "All Categories",
+    selectedGenre: "",
   },
   getters: {
     movieList: (state) => {

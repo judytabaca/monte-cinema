@@ -12,11 +12,9 @@
     </MovieCard>
   </div>
 </template>
-
 <script>
 import { mapGetters } from "vuex";
 import MovieCard from "./MovieCard.vue";
-
 export default {
   name: "MovieList",
   components: {
@@ -38,14 +36,11 @@ export default {
       const moviesByCategory = this.searchedMovies.filter(
         (movie) => movie.genre.name === this.selectedGenre
       );
-      return this.selectedGenre === "All Categories"
-        ? this.searchedMovies
-        : moviesByCategory;
+      return this.selectedGenre === "" ? this.searchedMovies : moviesByCategory;
     },
   },
 };
 </script>
-
 <style lang="scss" scoped>
 .movie-list {
   display: grid;
@@ -53,13 +48,11 @@ export default {
   grid-auto-rows: auto;
   gap: 2em;
 }
-
 @include md {
   .movie-list {
     grid-template-columns: 1fr 1fr;
   }
 }
-
 @include sm {
   .movie-list {
     grid-template-columns: 1fr;

@@ -1,13 +1,17 @@
 <template>
   <div class="movie-list">
-    <MovieCard v-for="movie in moviesByCategory" :key="movie.id" :movie="movie">
+    <MovieCard v-for="movie in searchedMovies" :key="movie.id" :movie="movie">
     </MovieCard>
   </div>
 </template>
-<script>
-import { mapGetters } from "vuex";
+
+<script lang="ts">
+import Vue from "vue";
+import { Movie } from "@/store/index";
 import MovieCard from "./MovieCard.vue";
-export default {
+import { mapGetters } from "vuex";
+
+export default Vue.extend({
   name: "MovieList",
   components: {
     MovieCard,
@@ -19,19 +23,15 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["movieList", "selectedGenre"]),
-    searchedMovies() {
+    ...mapGetters(["movieList", "selectedGenre", "movieListByGenre"]),
+    searchedMovies(): Array<Movie> {
       let re = new RegExp(this.search, "i");
-      return this.movieList.filter((movie) => movie.title.match(re));
-    },
-    moviesByCategory() {
-      const moviesByCategory = this.searchedMovies.filter(
-        (movie) => movie.genre.name === this.selectedGenre
+      return this.$store.getters.movieListByGenre.filter((movie: Movie) =>
+        movie.title.match(re)
       );
-      return this.selectedGenre === "" ? this.searchedMovies : moviesByCategory;
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

@@ -7,10 +7,23 @@ import { setAuthHeader, removeAuthHeader } from "@/services/api/client";
 Vue.use(Vuex);
 const authHeaderStorageKey = "LS_AUTH_HEADER";
 
+export interface Movie {
+  id: number;
+  title: string;
+  genre: {
+    id: number;
+    name: string;
+  };
+  poster_url: string;
+  length: number;
+  release_date: string;
+  description: string;
+}
+
 export default new Vuex.Store({
   state: {
-    moviesRecord: [],
-    genreList: [],
+    moviesRecord: [] as Array<Movie>,
+    genreList: [] as Array<string>,
     selectedGenre: "",
     authHeader: null,
   },
@@ -58,7 +71,7 @@ export default new Vuex.Store({
   actions: {
     async getMovies({ commit }) {
       try {
-        const movies = await apiMoviesService.getMovieList();
+        const movies: Array<Movie> = await apiMoviesService.getMovieList();
         commit("setMovies", movies);
       } catch (err) {
         console.log(err);
@@ -66,7 +79,7 @@ export default new Vuex.Store({
     },
     async getGenreList({ commit }) {
       try {
-        const movieList = await apiMoviesService.getMovieList();
+        const movieList: Array<Movie> = await apiMoviesService.getMovieList();
         const uniqueGenres = [
           ...new Set(movieList.map((movie) => movie.genre.name)),
         ];

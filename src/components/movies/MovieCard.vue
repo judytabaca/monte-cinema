@@ -11,21 +11,25 @@
   </div>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue, { PropType } from "vue";
+import toHoursAndMinutes from "@/utils/toHoursAndMinutes";
+import { Movie } from "@/store/index";
+
+export default Vue.extend({
   name: "MovieCard",
   props: {
     movie: {
-      type: Object,
+      type: Object as PropType<Movie>,
       default: null,
     },
   },
   methods: {
-    toHoursAndMinutes(timeInMinutes) {
-      return `${Math.floor(timeInMinutes / 60)}h ${timeInMinutes % 60} min`;
+    movieLength(time: number): string {
+      return toHoursAndMinutes(time);
     },
   },
-};
+});
 </script>
 
 <style scoped lang="scss">

@@ -1,22 +1,16 @@
 <template>
   <div class="movie-list">
-    <MovieCard v-for="movie in searchedMovies" :key="movie.id" :movie="movie">
+    <MovieCard v-for="movie in moviesByCategory" :key="movie.id" :movie="movie">
     </MovieCard>
   </div>
 </template>
-
 <script>
+import { mapGetters } from "vuex";
 import MovieCard from "./MovieCard.vue";
-
 export default {
   name: "MovieList",
   components: {
     MovieCard,
-  },
-  data() {
-    return {
-      selectedGenre: "",
-    };
   },
   props: {
     search: {
@@ -25,11 +19,16 @@ export default {
     },
   },
   computed: {
+    ...mapGetters(["movieList", "selectedGenre"]),
     searchedMovies() {
       let re = new RegExp(this.search, "i");
-      return this.$store.getters.movieListByGenre.filter((movie) =>
-        movie.title.match(re)
+      return this.movieList.filter((movie) => movie.title.match(re));
+    },
+    moviesByCategory() {
+      const moviesByCategory = this.searchedMovies.filter(
+        (movie) => movie.genre.name === this.selectedGenre
       );
+      return this.selectedGenre === "" ? this.searchedMovies : moviesByCategory;
     },
   },
 };

@@ -1,15 +1,19 @@
 <template>
-  <div class="movies-page">
-    <h1>All the movies</h1>
-    <div class="movie-filters">
-      <SearchInput v-model="search" />
-      <MovieCategoryDropdown />
+  <div>
+    <BreadCrumbs>Movies</BreadCrumbs>
+    <div class="movies-page">
+      <h1>All the movies</h1>
+      <div class="movie-filters">
+        <SearchInput v-model="search" />
+        <MovieCategoryDropdown />
+      </div>
+      <MovieList :search="search" />
     </div>
-    <MovieList :search="search" />
   </div>
 </template>
 
 <script>
+import BreadCrumbs from "@/components/UI/BreadCrumbs.vue";
 import SearchInput from "../components/UI/SearchInput.vue";
 import MovieCategoryDropdown from "../components/UI/MovieCategoryDropdown.vue";
 import MovieList from "../components/movies/MovieList.vue";
@@ -25,6 +29,7 @@ export default {
     MovieList,
     SearchInput,
     MovieCategoryDropdown,
+    BreadCrumbs,
   },
 };
 </script>

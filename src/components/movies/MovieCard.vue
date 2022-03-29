@@ -1,8 +1,9 @@
 <template>
   <div class="movie__wrapper">
-    <h2>{{ movie.title }}</h2>
-    <p>{{ toHoursAndMinutes(movie.length) }}</p>
-    <!-- <p>{{ length }}</p> -->
+    <router-link :to="`movie/${movie.id}`">
+      <h2>{{ movie.title }}</h2>
+      <p>{{ toHoursAndMinutes(movie.length) }}</p>
+    </router-link>
     <div class="image__wrapper">
       <img :src="movie.poster_url" />
     </div>

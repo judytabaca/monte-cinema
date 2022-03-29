@@ -18,7 +18,7 @@ defaultClient.interceptors.response.use(
   }
 );
 
-export const setAuthHeader = (authHeader) => {
+export const setAuthHeader = (authHeader: string) => {
   defaultClient.defaults.headers.common["Authorization"] = authHeader;
 };
 

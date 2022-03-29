@@ -1,29 +1,38 @@
 <template>
-  <div>
-    <BreadCrumbs>Screenings</BreadCrumbs>
-    <div class="screening-page">
-      <h1 class="screening-page__title">Screenings</h1>
-      <h2 class="screening-page__date">{{ headerDate }}</h2>
+  <div class="screening-page">
+    <template v-if="isLoading">
+      <LoadingSpinner />
+    </template>
+    <template v-else-if="error">
+      <ErrorMessage />
+    </template>
+    <template v-else>
+      <BreadCrumbs>Screenings</BreadCrumbs>
       <div>
-        <div class="screening-page__controls">
-          <DayTabs @selection="setSelectedDay" />
-        </div>
-
-        <div class="seances-list">
-          <SeanceCard
-            v-for="movieId in moviesOnTheDay"
-            :key="`movie_${movieId}`"
-            :movieId="movieId"
-            :seancesByMovie="seancesByMovie(movieId)"
-          />
+        <h1 class="screening-page__title">Screenings</h1>
+        <h2 class="screening-page__date">{{ headerDate }}</h2>
+        <div>
+          <div class="screening-page__controls">
+            <DayTabs @selection="setSelectedDay" />
+          </div>
+          <div class="seances-list">
+            <SeanceCard
+              v-for="movieId in moviesOnTheDay"
+              :key="`movie_${movieId}`"
+              :movieId="movieId"
+              :seancesByMovie="seancesByMovie(movieId)"
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </template>
   </div>
 </template>
 
 <script>
 import apiSeancesService from "@/services/api/apiSeancesService";
+import LoadingSpinner from "@/components/UI/LoadingSpinner.vue";
+import ErrorMessage from "@/components/UI/ErrorMessage.vue";
 import BreadCrumbs from "@/components/UI/BreadCrumbs.vue";
 import SeanceCard from "@/components/seances/SeanceCard.vue";
 import DayTabs from "@/components/UI/DaysTabs.vue";
@@ -32,6 +41,8 @@ export default {
   name: "ScreeningsPage",
   data() {
     return {
+      isLoading: false,
+      error: null,
       selectedDay: "",
       seancesList: [],
     };
@@ -71,10 +82,16 @@ export default {
       this.selectedDay = date.toISOString().substring(0, 10);
     },
     async getSeancesList() {
-      const fullList = await apiSeancesService.getSeancesList();
-      this.seancesList = fullList.filter(
-        (seance) => seance.datetime.substring(0, 10) === this.selectedDay
-      );
+      this.isLoading = true;
+      try {
+        const fullList = await apiSeancesService.getSeancesList();
+        this.seancesList = fullList.filter(
+          (seance) => seance.datetime.substring(0, 10) === this.selectedDay
+        );
+      } catch (err) {
+        this.error = err;
+      }
+      this.isLoading = false;
     },
     seancesByMovie(movieId) {
       return this.seancesOnTheDay.filter((seance) => seance.movie == movieId);
@@ -95,6 +112,11 @@ export default {
     DayTabs,
     SeanceCard,
     BreadCrumbs,
+    LoadingSpinner,
+    ErrorMessage,
+  },
+  errorCaptured(error) {
+    this.error = error || true;
   },
 };
 </script>

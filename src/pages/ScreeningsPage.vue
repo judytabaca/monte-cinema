@@ -7,14 +7,15 @@
       <div>
         <div class="screening-page__controls">
           <DayTabs @selection="setSelectedDay" />
+          <MovieCategoryDropdown />
         </div>
 
         <div class="seances-list">
           <SeanceCard
-            v-for="movieId in moviesOnTheDay"
-            :key="`movie_${movieId}`"
-            :movieId="movieId"
-            :seancesByMovie="seancesByMovie(movieId)"
+            v-for="movie in moviesByCategory"
+            :key="`movie_${movie.id}`"
+            :movieId="movie.id"
+            :seancesByMovie="seancesByMovie(movie.id)"
           />
         </div>
       </div>
@@ -27,6 +28,8 @@ import apiSeancesService from "@/services/api/apiSeancesService";
 import BreadCrumbs from "@/components/UI/BreadCrumbs.vue";
 import SeanceCard from "@/components/seances/SeanceCard.vue";
 import DayTabs from "@/components/UI/DaysTabs.vue";
+import MovieCategoryDropdown from "@/components/UI/MovieCategoryDropdown.vue";
+import { mapGetters } from "vuex";
 
 export default {
   name: "ScreeningsPage",
@@ -37,6 +40,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters(["movieList", "selectedGenre"]),
     todayDaySelection() {
       let date = new Date();
       return date.toISOString().substring(0, 10);
@@ -57,7 +61,25 @@ export default {
       return `${dayName}, ${date}`;
     },
     moviesOnTheDay() {
-      return [...new Set(this.seancesOnTheDay.map((seance) => seance.movie))];
+      const moviesShown = [
+        ...new Set(this.seancesOnTheDay.map((seance) => seance.movie)),
+      ];
+      const moviesWithGenre = moviesShown.map((movie) => {
+        return {
+          id: movie,
+          genre: this.movieList.find((film) => film.id === movie).genre.name,
+        };
+      });
+      return moviesWithGenre;
+    },
+    moviesByCategory() {
+      if (this.selectedGenre === "") {
+        return this.moviesOnTheDay;
+      } else {
+        return this.moviesOnTheDay.filter(
+          (movie) => movie.genre === this.selectedGenre
+        );
+      }
     },
     seancesOnTheDay() {
       return this.seancesList.filter(
@@ -87,6 +109,7 @@ export default {
   },
   mounted() {
     this.selectedDay = this.todayDaySelection;
+    this.$store.commit("setSelectedGenre", "");
   },
   metaInfo: {
     title: "Screenings",
@@ -95,6 +118,7 @@ export default {
     DayTabs,
     SeanceCard,
     BreadCrumbs,
+    MovieCategoryDropdown,
   },
 };
 </script>
@@ -103,6 +127,9 @@ export default {
 .screening-page {
   &__controls {
     margin-bottom: 50px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
   }
 
   &__title,

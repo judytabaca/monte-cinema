@@ -1,19 +1,15 @@
 import toHoursAndMinutes from "@/utils/toHoursAndMinutes";
 
-const input = 71;
-const output = toHoursAndMinutes(input);
-
 describe("toHoursAndMinutes", () => {
-  it("returns value", () => {
-    expect(output).toBeTruthy;
+  it("returns 'Unknown' when number is less than or equal to 0", () => {
+    expect(toHoursAndMinutes(0)).toMatch("Unknown");
   });
 
-  it("returns string", () => {
-    expect(typeof output).toBe("string");
+  it("returns time in minutes when number is less than 60", () => {
+    expect(toHoursAndMinutes(59)).toMatch("59min");
   });
 
   it("return string in correct format", () => {
-    const re = /\dh\s\d{2}min/;
-    expect(output).toMatch(re);
+    expect(toHoursAndMinutes(71)).toMatch("1h 11min");
   });
 });

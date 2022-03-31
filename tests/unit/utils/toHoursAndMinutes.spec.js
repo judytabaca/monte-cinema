@@ -12,4 +12,8 @@ describe("toHoursAndMinutes", () => {
   it("return string in correct format", () => {
     expect(toHoursAndMinutes(71)).toMatch("1h 11min");
   });
+
+  it("return string in correct format", () => {
+    expect(toHoursAndMinutes(59)).toMatch("59min");
+  });
 });

@@ -22,6 +22,7 @@
             :movieId="movie.id"
             :seancesByMovie="seancesByMovie(movie.id)"
           />
+        </div>
       </div>
     </template>
   </div>

@@ -47,7 +47,7 @@ export default {
     }
 
     const isFormValid = computed(() => {
-      return email && password;
+      return email.value && password.value;
     });
 
     return {

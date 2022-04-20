@@ -4,7 +4,7 @@
       <div class="login-card-wrapper__form form-field">
         <MainInput v-model="email" />
         <PasswordInput v-model="password" />
-        <div class="login-card-wrapper__form__buttons">
+        <div class="login-card-wrapper_form_buttons">
           <router-link :to="{ name: 'RegisterPage' }">
             <MainButton button-type="secondary">Register instead</MainButton>
           </router-link>
@@ -18,20 +18,23 @@
 </template>
 
 <script>
-import { computed, ref } from "@vue/composition-api";
-import { useStore } from "vuex";
-import { useRouter } from "vue-router";
+import { computed, ref, getCurrentInstance } from "@vue/composition-api";
 import MainButton from "../components/UI/MainButton.vue";
 import MainInput from "../components/UI/EmailInput.vue";
 import PasswordInput from "../components/UI/PasswordInput.vue";
 
 export default {
   setup() {
-    const store = useStore();
-    const router = useRouter();
-
     const email = ref("");
     const password = ref("");
+
+    const ci = getCurrentInstance();
+    console.log(ci);
+
+    const store = ci.proxy.$root.$store;
+    const router = ci.proxy.$root._router;
+
+    console.log(store);
 
     async function onSubmit() {
       try {

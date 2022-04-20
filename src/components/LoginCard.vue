@@ -29,18 +29,15 @@ export default {
     const password = ref("");
 
     const ci = getCurrentInstance();
-    console.log(ci);
 
     const store = ci.proxy.$root.$store;
-    const router = ci.proxy.$root._router;
-
-    console.log(store);
+    const router = ci.proxy.$root.$router;
 
     async function onSubmit() {
       try {
         await store.dispatch("login", {
-          email: email,
-          password: password,
+          email: email.value,
+          password: password.value,
         });
         router.push("/");
       } catch (error) {

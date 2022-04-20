@@ -18,40 +18,46 @@
 </template>
 
 <script>
+import { computed, ref } from "@vue/composition-api";
+import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 import MainButton from "../components/UI/MainButton.vue";
 import MainInput from "../components/UI/EmailInput.vue";
 import PasswordInput from "../components/UI/PasswordInput.vue";
 
 export default {
-  data() {
-    return {
-      email: "",
-      password: "",
-    };
-  },
-  methods: {
-    loginUser() {
-      console.log("user email: ", this.email);
-      console.log("user password: ", this.password);
-    },
-    async onSubmit() {
+  setup() {
+    const store = useStore();
+    const router = useRouter();
+
+    const email = ref("");
+    const password = ref("");
+
+    async function onSubmit() {
       try {
-        await this.$store.dispatch("login", {
-          email: this.email,
-          password: this.password,
+        await store.dispatch("login", {
+          email: email,
+          password: password,
         });
-        this.$router.push("/");
+        router.push("/");
       } catch (error) {
         alert(error);
         console.error(error);
       }
-    },
+    }
+
+    const isFormValid = computed(() => {
+      return email && password;
+    });
+
+    return {
+      onSubmit,
+      isFormValid,
+      email,
+      password,
+    };
   },
-  computed: {
-    isFormValid() {
-      return this.email && this.password;
-    },
-  },
+
   components: {
     MainButton,
     MainInput,

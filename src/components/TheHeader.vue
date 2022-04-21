@@ -46,11 +46,12 @@
     <template v-if="isLogin || isRegister">
       <div class="with-love">designed with ❤️ by monterail</div>
     </template>
-    <div class="menu__toggle">
+    <div class="menu__toggle" @click="mobileMenuOn = !mobileMenuOn">
       <div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
+        <input class="checkbox" type="checkbox" name="" id="" />
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
       </div>
     </div>
   </header>
@@ -61,6 +62,11 @@ import MainButton from "./UI/MainButton.vue";
 
 export default {
   name: "TheHeader",
+  data() {
+    return {
+      mobileMenuOn: false,
+    };
+  },
   computed: {
     isLogin() {
       return this.$route.name === "LoginPage";
@@ -145,12 +151,52 @@ export default {
     justify-content: center;
     align-items: center;
 
+    &:hover {
+      .line1 {
+        transform: rotate(45deg);
+      }
+
+      .line2 {
+        transform: scaleY(0);
+      }
+
+      .line3 {
+        transform: rotate(-45deg);
+      }
+    }
+
+    .checkbox {
+      position: absolute;
+      display: block;
+      height: 32px;
+      width: 32px;
+      top: 20px;
+      left: 20px;
+      z-index: 5;
+      opacity: 0;
+      cursor: pointer;
+    }
+
     div {
       .line {
         width: 32px;
         height: 3px;
         background-color: $tuna;
         margin-bottom: 5px;
+      }
+
+      .line1 {
+        transform-origin: 12% 0%;
+        transition: transform 0.4s ease-in-out;
+      }
+
+      .line2 {
+        transition: transform 0.2s ease-in-out;
+      }
+
+      .line3 {
+        transform-origin: 12% 100%;
+        transition: transform 0.4s ease-in-out;
       }
     }
   }

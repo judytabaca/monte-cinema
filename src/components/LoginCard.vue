@@ -4,7 +4,7 @@
       <div class="login-card-wrapper__form form-field">
         <MainInput v-model="email" />
         <PasswordInput v-model="password" />
-        <div class="login-card-wrapper__form__buttons">
+        <div class="login-card-wrapper_form_buttons">
           <router-link :to="{ name: 'RegisterPage' }">
             <MainButton button-type="secondary">Register instead</MainButton>
           </router-link>
@@ -18,40 +18,46 @@
 </template>
 
 <script>
+import { computed, ref, getCurrentInstance } from "@vue/composition-api";
 import MainButton from "../components/UI/MainButton.vue";
 import MainInput from "../components/UI/EmailInput.vue";
 import PasswordInput from "../components/UI/PasswordInput.vue";
 
 export default {
-  data() {
-    return {
-      email: "",
-      password: "",
-    };
-  },
-  methods: {
-    loginUser() {
-      console.log("user email: ", this.email);
-      console.log("user password: ", this.password);
-    },
-    async onSubmit() {
+  setup() {
+    const email = ref("");
+    const password = ref("");
+
+    const ci = getCurrentInstance();
+
+    const store = ci.proxy.$root.$store;
+    const router = ci.proxy.$root.$router;
+
+    async function onSubmit() {
       try {
-        await this.$store.dispatch("login", {
-          email: this.email,
-          password: this.password,
+        await store.dispatch("login", {
+          email: email.value,
+          password: password.value,
         });
-        this.$router.push("/");
+        router.push("/");
       } catch (error) {
         alert(error);
         console.error(error);
       }
-    },
+    }
+
+    const isFormValid = computed(() => {
+      return email.value && password.value;
+    });
+
+    return {
+      onSubmit,
+      isFormValid,
+      email,
+      password,
+    };
   },
-  computed: {
-    isFormValid() {
-      return this.email && this.password;
-    },
-  },
+
   components: {
     MainButton,
     MainInput,

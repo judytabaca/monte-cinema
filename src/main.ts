@@ -1,4 +1,5 @@
 import Vue from "vue";
+import vueCompositionApi from "@vue/composition-api";
 import router from "@/router";
 
 import App from "./App.vue";
@@ -10,6 +11,7 @@ import store from "./store";
 Vue.config.productionTip = false;
 
 Vue.use(VueRouter);
+Vue.use(vueCompositionApi);
 Vue.use(Meta);
 
 new Vue({

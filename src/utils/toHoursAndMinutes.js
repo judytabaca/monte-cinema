@@ -6,7 +6,7 @@ const toHoursAndMinutes = (timeInMinutes) => {
     return "Unknown";
   } else if (timeInMinutes === 60) {
     return "60min";
-  } else if (timeInMinutes < 61) {
+  } else if (timeInMinutes < 60) {
     return `${minutes}min`;
   } else {
     return `${hours}h ${minutes}min`;

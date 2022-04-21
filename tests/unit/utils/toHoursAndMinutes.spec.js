@@ -9,11 +9,11 @@ describe("toHoursAndMinutes", () => {
     expect(toHoursAndMinutes(59)).toMatch("59min");
   });
 
-  it("return string in correct format", () => {
+  it("return string in correct format when time is over 60 minutes", () => {
     expect(toHoursAndMinutes(71)).toMatch("1h 11min");
   });
 
-  it("return string in correct format", () => {
-    expect(toHoursAndMinutes(59)).toMatch("59min");
+  it("return string in correct format when time is exactly 60 minutes", () => {
+    expect(toHoursAndMinutes(60)).toMatch("60min");
   });
 });

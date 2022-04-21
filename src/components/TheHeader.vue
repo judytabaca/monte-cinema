@@ -41,19 +41,18 @@
             <MainButton button-type="primary">Login</MainButton>
           </router-link>
         </template>
-        <!-- TODO: mobile menu -->
-        <!-- <div class="menu__toggle">
-          <div>
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-          </div>
-        </div> -->
       </div>
     </template>
     <template v-if="isLogin || isRegister">
       <div class="with-love">designed with ❤️ by monterail</div>
     </template>
+    <div class="menu__toggle">
+      <div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
   </header>
 </template>
 
@@ -136,15 +135,17 @@ export default {
     .button {
       margin-left: 1em;
     }
+  }
 
-    .menu__toggle {
-      height: 100%;
-      width: 60px;
-      cursor: pointer;
-      display: none;
-      justify-content: center;
-      align-self: center;
+  .menu__toggle {
+    height: 100%;
+    width: 60px;
+    cursor: pointer;
+    display: none;
+    justify-content: center;
+    align-items: center;
 
+    div {
       .line {
         width: 32px;
         height: 3px;
@@ -155,17 +156,25 @@ export default {
   }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 900px) {
   .header {
     padding: 15px 25px;
-  }
 
-  .menu__toggle {
-    display: flex;
-  }
+    &__navbar {
+      display: none;
+    }
 
-  .header__buttons .button {
-    display: none;
+    .menu__toggle {
+      display: flex;
+    }
+
+    &__buttons {
+      display: none;
+    }
+
+    .with-love {
+      display: none;
+    }
   }
 }
 </style>

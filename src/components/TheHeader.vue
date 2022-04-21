@@ -48,9 +48,10 @@
     </template>
     <div class="menu__toggle" @click="mobileMenuOn = !mobileMenuOn">
       <div>
-        <div class="line line1"></div>
-        <div class="line line2"></div>
-        <div class="line line3"></div>
+        <input type="checkbox" />
+        <div class="line line1" :class="line1active"></div>
+        <div class="line line2" :class="line2active"></div>
+        <div class="line line3" :class="line3active"></div>
       </div>
     </div>
     <Transition>
@@ -117,6 +118,15 @@ export default {
     },
     isLoggedIn() {
       return this.$store.getters.isLoggedIn;
+    },
+    line1active() {
+      return { "line1--active": this.mobileMenuOn };
+    },
+    line2active() {
+      return { "line2--active": this.mobileMenuOn };
+    },
+    line3active() {
+      return { "line3--active": this.mobileMenuOn };
     },
   },
   methods: {
@@ -246,30 +256,18 @@ export default {
     justify-content: center;
     align-items: center;
 
-    &:hover {
-      .line1 {
-        transform: rotate(45deg);
-      }
-
-      .line2 {
-        transform: scaleY(0);
-      }
-
-      .line3 {
-        transform: rotate(-45deg);
-      }
-    }
-
-    .checkbox {
-      position: absolute;
+    input {
       display: block;
+      width: 40px;
       height: 32px;
-      width: 32px;
-      top: 20px;
-      left: 20px;
-      z-index: 5;
-      opacity: 0;
+      position: absolute;
+      top: -7px;
+      left: -5px;
+
       cursor: pointer;
+
+      opacity: 0;
+      z-index: 2;
     }
 
     div {
@@ -283,15 +281,24 @@ export default {
       .line1 {
         transform-origin: 12% 0%;
         transition: transform 0.4s ease-in-out;
+        &--active {
+          transform: rotate(45deg);
+        }
       }
 
       .line2 {
         transition: transform 0.2s ease-in-out;
+        &--active {
+          transform: scaleY(0);
+        }
       }
 
       .line3 {
         transform-origin: 12% 100%;
         transition: transform 0.4s ease-in-out;
+        &--active {
+          transform: rotate(-45deg);
+        }
       }
     }
   }

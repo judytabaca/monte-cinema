@@ -54,6 +54,47 @@
         <div class="line line3"></div>
       </div>
     </div>
+    <div class="mobile-menu">
+      <div class="mobile-menu__buttons">
+        <template v-if="isLoggedIn">
+          <MainButton button-type="primary" @click="logout">Logout</MainButton>
+        </template>
+        <template v-else>
+          <router-link :to="{ name: 'RegisterPage' }">
+            <MainButton button-type="secondary">Register</MainButton>
+          </router-link>
+          <router-link :to="{ name: 'LoginPage' }">
+            <MainButton button-type="primary">Login</MainButton>
+          </router-link>
+        </template>
+        <template v-if="isLogin || isRegister">
+          <div class="with-love">designed with ❤️ by monterail</div>
+        </template>
+      </div>
+      <ul class="mobile-menu__links">
+        <li>
+          <router-link
+            :to="{ name: 'AllMovies' }"
+            class="header__navbar-options"
+            >Movies</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            :to="{ name: 'ScreeningsPage' }"
+            class="header__navbar-options"
+            >Screenings</router-link
+          >
+        </li>
+        <li>
+          <router-link
+            :to="{ name: 'ContactPage' }"
+            class="header__navbar-options"
+            >Contact us</router-link
+          >
+        </li>
+      </ul>
+    </div>
   </header>
 </template>
 
@@ -96,6 +137,50 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+
+  .mobile-menu {
+    background-color: white;
+    width: 100%;
+    height: 170px;
+    position: fixed;
+    top: 80px;
+    right: 0;
+    z-index: 99;
+    -webkit-box-shadow: 0px 30px 24px 0px rgba(66, 68, 90, 0.32);
+    -moz-box-shadow: 0px 30px 24px 0px rgba(66, 68, 90, 0.32);
+    box-shadow: 0px 30px 24px 0px rgba(66, 68, 90, 0.32);
+
+    &__buttons {
+      width: 100%;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+    }
+
+    &__links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+
+      li {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+
+        &:hover,
+        &:active {
+          font-weight: 700;
+          color: $gray-abbey;
+          box-shadow: inset 0px -4px 0px $cherry-red;
+        }
+      }
+    }
+  }
 
   .with-love {
     font-weight: 500;

@@ -5,10 +5,14 @@
       class="dropdown-categories__select"
       @change="$store.commit('setSelectedGenre', $event.target.value)"
     >
+      <option class="dropdown-categories__options" value="">
+        All Categories
+      </option>
       <option
         class="dropdown-categories__options"
-        v-for="genre in movieCategories"
+        v-for="genre in $store.getters.genreList"
         :key="genre"
+        :value="genre"
       >
         {{ genre }}
       </option>
@@ -33,11 +37,13 @@ export default {
 <style lang="scss" scoped>
 .dropdown-categories {
   width: 100%;
-
   &__label {
-    @include roboto-mono-700;
+    font-family: Roboto, Mono;
     color: $bittersweet;
     text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
     margin: 12px 0;
   }
 

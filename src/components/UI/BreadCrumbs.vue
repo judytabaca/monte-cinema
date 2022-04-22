@@ -27,7 +27,7 @@ export default {
 
   props: {
     backPath: {
-      type: Object,
+      type: String,
       default: null,
     },
     secondLevel: {

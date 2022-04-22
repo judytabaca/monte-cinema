@@ -5,18 +5,16 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from "vue";
+import { Movie } from "@/store/index";
 import MovieCard from "./MovieCard.vue";
+import { mapGetters } from "vuex";
 
-export default {
+export default Vue.extend({
   name: "MovieList",
   components: {
     MovieCard,
-  },
-  data() {
-    return {
-      selectedGenre: "",
-    };
   },
   props: {
     search: {
@@ -25,14 +23,15 @@ export default {
     },
   },
   computed: {
-    searchedMovies() {
+    ...mapGetters(["movieList", "selectedGenre", "movieListByGenre"]),
+    searchedMovies(): Array<Movie> {
       let re = new RegExp(this.search, "i");
-      return this.$store.getters.movieListByGenre.filter((movie) =>
+      return this.$store.getters.movieListByGenre.filter((movie: Movie) =>
         movie.title.match(re)
       );
     },
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

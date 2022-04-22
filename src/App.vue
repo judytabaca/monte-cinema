@@ -25,6 +25,9 @@ export default {
     this.$store.dispatch("getMovies");
     this.$store.dispatch("getGenreList");
   },
+  created() {
+    this.$store.dispatch("restoreUserData");
+  },
 };
 </script>
 

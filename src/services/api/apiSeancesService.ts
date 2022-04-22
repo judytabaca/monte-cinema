@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const baseUrl = process.env.VUE_APP_BASE_URL;
-const endPoint = "/movies";
+const endPoint = "/seances";
 
-const getMovieList = async () => {
+const getSeancesList = async () => {
   try {
     const response = await axios.get(baseUrl + endPoint);
     return response.data;
@@ -13,5 +13,5 @@ const getMovieList = async () => {
 };
 
 export default {
-  getMovieList,
+  getSeancesList,
 };

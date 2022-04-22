@@ -1,15 +1,9 @@
 <template>
   <div class="movie__wrapper">
-<<<<<<< HEAD
-    <h2>{{ movie.title }}</h2>
-    <p class="movie__wrapper__time">{{ movieLength(movie.length) }}</p>
-    <!-- <p>{{ length }}</p> -->
-=======
     <router-link :to="`movie/${movie.id}`">
       <h2>{{ movie.title }}</h2>
       <p>{{ movieLength(movie.length) }}</p>
     </router-link>
->>>>>>> dd23dc7adf9386c5788cfc8655e4de1e052f427e
     <div class="image__wrapper">
       <img :src="movie.poster_url" />
     </div>
@@ -17,19 +11,12 @@
   </div>
 </template>
 
-<<<<<<< HEAD
-<script>
-import toHoursAndMinutes from "@/utils/toHoursAndMinutes";
-
-export default {
-=======
 <script lang="ts">
 import Vue, { PropType } from "vue";
 import toHoursAndMinutes from "@/utils/toHoursAndMinutes";
 import { Movie } from "@/store/index";
 
 export default Vue.extend({
->>>>>>> dd23dc7adf9386c5788cfc8655e4de1e052f427e
   name: "MovieCard",
   props: {
     movie: {
@@ -38,13 +25,8 @@ export default Vue.extend({
     },
   },
   methods: {
-<<<<<<< HEAD
-    movieLength(timeInMinutes) {
-      return toHoursAndMinutes(timeInMinutes);
-=======
     movieLength(time: number): string {
       return toHoursAndMinutes(time);
->>>>>>> dd23dc7adf9386c5788cfc8655e4de1e052f427e
     },
   },
 });

@@ -47,11 +47,10 @@
       <div class="with-love">designed with ❤️ by monterail</div>
     </template>
     <div class="menu__toggle" @click="mobileMenuOn = !mobileMenuOn">
-      <div>
-        <input type="checkbox" />
-        <div class="line line1" :class="line1active"></div>
-        <div class="line line2" :class="line2active"></div>
-        <div class="line line3" :class="line3active"></div>
+      <div :class="buttonActive">
+        <div class="line line1"></div>
+        <div class="line line2"></div>
+        <div class="line line3"></div>
       </div>
     </div>
     <Transition>
@@ -128,6 +127,11 @@ export default {
     line3active() {
       return { "line3--active": this.mobileMenuOn };
     },
+    buttonActive() {
+      return this.mobileMenuOn
+        ? "menu__toggle__lines--active"
+        : "menu__toggle__lines";
+    },
   },
   methods: {
     logout() {
@@ -167,8 +171,6 @@ export default {
     top: 80px;
     right: 0;
     z-index: 99;
-    -webkit-box-shadow: 0px 30px 24px 0px rgba(66, 68, 90, 0.32);
-    -moz-box-shadow: 0px 30px 24px 0px rgba(66, 68, 90, 0.32);
     box-shadow: 0px 30px 24px 0px rgba(66, 68, 90, 0.32);
 
     &__buttons {
@@ -256,21 +258,7 @@ export default {
     justify-content: center;
     align-items: center;
 
-    input {
-      display: block;
-      width: 40px;
-      height: 32px;
-      position: absolute;
-      top: -7px;
-      left: -5px;
-
-      cursor: pointer;
-
-      opacity: 0;
-      z-index: 2;
-    }
-
-    div {
+    &__lines {
       .line {
         width: 32px;
         height: 3px;
@@ -279,26 +267,35 @@ export default {
       }
 
       .line1 {
-        transform-origin: 12% 0%;
+        transform-origin: 0% 0%;
         transition: transform 0.4s ease-in-out;
-        &--active {
-          transform: rotate(45deg);
-        }
       }
 
       .line2 {
         transition: transform 0.2s ease-in-out;
-        &--active {
-          transform: scaleY(0);
-        }
       }
 
       .line3 {
-        transform-origin: 12% 100%;
+        transform-origin: 0% 100%;
         transition: transform 0.4s ease-in-out;
-        &--active {
-          transform: rotate(-45deg);
-        }
+      }
+    }
+    &__lines--active {
+      .line {
+        width: 32px;
+        height: 3px;
+        background-color: $tuna;
+        margin-bottom: 5px;
+      }
+
+      .line1 {
+        transform: rotate(45deg) translateY(11px);
+      }
+      .line2 {
+        transform: scaleY(0);
+      }
+      .line3 {
+        transform: rotate(-45deg) translateY(-11px);
       }
     }
   }

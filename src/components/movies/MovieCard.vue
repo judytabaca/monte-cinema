@@ -7,7 +7,7 @@
     <div class="image__wrapper">
       <img :src="movie.poster_url" />
     </div>
-    <p>{{ movie.genre.name }}</p>
+    <p class="movie__wrapper__genre">{{ movie.genre.name }}</p>
   </div>
 </template>
 

@@ -1,13 +1,14 @@
 <template>
   <div class="wrapper">
-    <label :for="iputCat" class="input-label"><slot /></label>
+    <label :for="inputName" class="input-label"><slot /></label>
     <input
+      :id="inputName"
       class="input-box"
       required
-      :type="iputCat"
+      :type="inputType"
       placeholder="..."
       :value="value"
-      :name="iputCat"
+      :name="inputType"
       @input="$emit('input', $event.target.value)"
       @blur="$emit('blurTouched')"
     />
@@ -26,25 +27,9 @@ export default {
       type: String,
       default: "text",
     },
-  },
-  computed: {
-    iputCat() {
-      switch (this.inputType) {
-        case "text":
-          return "text";
-        case "password":
-          return "password";
-        case "date":
-          return "date";
-        case "email":
-          return "email";
-        case "month":
-          return "month";
-        case "number":
-          return "number";
-        default:
-          return "text";
-      }
+    inputName: {
+      type: String,
+      default: "",
     },
   },
 };

@@ -7,7 +7,7 @@
       <ErrorMessage />
     </template>
     <template v-else>
-      <BreadCrumbs>Screenings</BreadCrumbs>
+      <BreadCrumbs v-if="showBreadcrumns">Screenings</BreadCrumbs>
       <div>
         <h1 class="screening-page__title">Screenings</h1>
         <h2 class="screening-page__date">{{ headerDate }}</h2>
@@ -95,10 +95,12 @@ export default {
         (seance) => seance.datetime.substring(0, 10) === this.selectedDay
       );
     },
+    showBreadcrumns() {
+      return this.$route.name === "ScreeningsPage";
+    },
   },
   methods: {
     setSelectedDay(date) {
-      console.log(date);
       this.selectedDay = date.toISOString().substring(0, 10);
     },
     async getSeancesList() {

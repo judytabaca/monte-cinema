@@ -40,5 +40,6 @@ export default {
   color: $tuna;
   background-color: $input-background;
   border-radius: 24px;
+  margin-bottom: 40px;
 }
 </style>

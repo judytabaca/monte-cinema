@@ -20,22 +20,32 @@
         <img :src="movie.poster_url" alt="" />
       </div>
     </div>
+    <div>
+      <DaysTabs @selection="setSelectedDay" />
+      <SeanceCard :movieId="movieId" :seancesByMovie="todayScreenings" />
+    </div>
   </div>
 </template>
 
 <script>
 import BreadCrumbs from "@/components/UI/BreadCrumbs.vue";
+import toHoursAndMinutes from "@/utils/toHoursAndMinutes";
+import apiSeancesService from "@/services/api/apiSeancesService";
+import DaysTabs from "@/components/UI/DaysTabs.vue";
+import SeanceCard from "@/components/seances/SeanceCard.vue";
 
 export default {
   name: "MovieDetailsPage",
   metaInfo() {
-    return { title: this.movieId };
+    return { title: this.movie?.title };
   },
   data() {
     return {
       movie: this.$store.getters.movieList.find(
         (movie) => movie.id == this.movieId
       ),
+      selectedDay: "",
+      seancesList: [],
     };
   },
   props: {
@@ -46,11 +56,47 @@ export default {
   },
   components: {
     BreadCrumbs,
+    DaysTabs,
+    SeanceCard,
+  },
+  computed: {
+    todayDaySelection() {
+      let date = new Date();
+      return date.toISOString().substring(0, 10);
+    },
+    todayScreenings() {
+      return this.seancesList.filter(
+        (seance) => seance.movie === parseInt(this.movieId)
+      );
+    },
   },
   methods: {
     toHoursAndMinutes(timeInMinutes) {
-      return `${Math.floor(timeInMinutes / 60)}h ${timeInMinutes % 60} min`;
+      return toHoursAndMinutes(timeInMinutes);
     },
+    setSelectedDay(date) {
+      this.selectedDay = date.toISOString().substring(0, 10);
+    },
+    async getSeancesList() {
+      this.isLoading = true;
+      try {
+        const fullList = await apiSeancesService.getSeancesList();
+        this.seancesList = fullList.filter(
+          (seance) => seance.datetime.substring(0, 10) === this.selectedDay
+        );
+      } catch (err) {
+        this.error = err;
+      }
+      this.isLoading = false;
+    },
+  },
+  watch: {
+    selectedDay() {
+      this.getSeancesList();
+    },
+  },
+  mounted() {
+    this.selectedDay = this.todayDaySelection;
   },
 };
 </script>

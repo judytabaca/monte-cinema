@@ -12,7 +12,7 @@
           {{ matchedMovie(movieId).genre.name }}
         </span>
         <span class="seance-card__details__info__time">
-          {{ matchedMovie(movieId).length }}
+          {{ movieLength(matchedMovie(movieId).length) }}
           min
         </span>
       </div>
@@ -30,6 +30,8 @@
 </template>
 
 <script>
+import toHoursAndMinutes from "@/utils/toHoursAndMinutes";
+
 export default {
   name: "SeanceCard",
   props: {
@@ -43,6 +45,9 @@ export default {
     },
   },
   methods: {
+    movieLength(time) {
+      return toHoursAndMinutes(time);
+    },
     matchedMovie(movieId) {
       return this.$store.getters.movieList.find((movie) => movie.id == movieId);
     },

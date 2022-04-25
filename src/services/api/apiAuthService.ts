@@ -1,6 +1,11 @@
 import { defaultClient } from "./client";
 
-export const register = async (credentials) =>
+type Credentials = {
+  email: string;
+  password: string;
+};
+
+export const register = async (credentials: Credentials) =>
   defaultClient.post("/register", {
     user: {
       email: credentials.email,
@@ -9,7 +14,7 @@ export const register = async (credentials) =>
     },
   });
 
-export const login = async (credentials) =>
+export const login = async (credentials: Credentials) =>
   defaultClient.post("/login", {
     user: {
       email: credentials.email,

@@ -2,12 +2,12 @@
   <div class="movie__wrapper">
     <router-link :to="`movie/${movie.id}`">
       <h2>{{ movie.title }}</h2>
-      <p>{{ toHoursAndMinutes(movie.length) }}</p>
+      <p>{{ movieLength(movie.length) }}</p>
     </router-link>
     <div class="image__wrapper">
       <img :src="movie.poster_url" />
     </div>
-    <p>{{ movie.genre.name }}</p>
+    <p class="movie__wrapper__genre">{{ movie.genre.name }}</p>
   </div>
 </template>
 

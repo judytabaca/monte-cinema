@@ -33,11 +33,9 @@
           <router-link :to="{ name: 'LoginPage' }">
             <MainButton button-type="secondary">Log in instead</MainButton>
           </router-link>
-          <router-link to="#">
-            <MainButton button-type="primary" :disabled="!isFormValid"
-              >Next step</MainButton
-            >
-          </router-link>
+          <MainButton button-type="primary" :disabled="!isFormValid"
+            >Next step</MainButton
+          >
         </div>
       </div>
     </form>
@@ -59,16 +57,18 @@ export default {
     };
   },
   methods: {
-    registerUser() {
-      console.log("user email: ", this.email);
-      console.log("user password: ", this.password);
-    },
     submitForm() {
       this.touchAll();
       if (this.isFormValid) {
-        console.log("submitted");
         this.registerUser();
       }
+    },
+    registerUser() {
+      const userCred = {
+        userPassword: this.password,
+        userEmail: this.email,
+      };
+      this.$emit("userCredentials", userCred);
     },
     touchAll() {
       this.emailTouched = true;

@@ -39,9 +39,12 @@ export default {
       this.currentStep += 1;
     },
     updateUserDetails(payload) {
-      this.userCredentialas.firstName = payload.firstName;
-      this.userCredentialas.lastName = payload.lastName;
-      this.userCredentialas.dateOfBirth = payload.dateOfBirth;
+      this.userCredentialas = {
+        ...this.userCredentialas, 
+        first_name = payload.firstName,
+        last_name = payload.lastName,
+        date_of_birth = payload.dateOfBirth
+        }
       console.log(this.userCredentialas);
     },
   },

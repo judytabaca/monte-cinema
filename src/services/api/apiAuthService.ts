@@ -3,6 +3,9 @@ import { defaultClient } from "./client";
 type Credentials = {
   email: string;
   password: string;
+  first_name: string;
+  last_name: string;
+  date_of_birth: string;
 };
 
 export const register = async (credentials: Credentials) =>
@@ -11,6 +14,8 @@ export const register = async (credentials: Credentials) =>
       email: credentials.email,
       password: credentials.password,
       date_of_birth: "1990-01-01",
+      first_name:'',
+      last_name: ''
     },
   });
 

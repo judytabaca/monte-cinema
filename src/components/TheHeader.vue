@@ -118,15 +118,6 @@ export default {
     isLoggedIn() {
       return this.$store.getters.isLoggedIn;
     },
-    line1active() {
-      return { "line1--active": this.mobileMenuOn };
-    },
-    line2active() {
-      return { "line2--active": this.mobileMenuOn };
-    },
-    line3active() {
-      return { "line3--active": this.mobileMenuOn };
-    },
     buttonActive() {
       return this.mobileMenuOn
         ? "menu__toggle__lines--active"

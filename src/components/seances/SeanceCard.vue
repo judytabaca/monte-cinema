@@ -1,13 +1,13 @@
 <template>
   <div class="seance-card">
     <div class="seance-card__poster">
-      <router-link :to="`movie/${movieId}`">
+      <router-link :to="{ name: 'MovieDetailsPage', params: { movieId } }">
         <img :src="matchedMovie(movieId).poster_url" alt="poster" />
       </router-link>
     </div>
     <div class="seance-card__details">
       <h3>
-        <router-link :to="`movie/${movieId}`">
+        <router-link :to="{ name: 'MovieDetailsPage', params: { movieId } }">
           {{ matchedMovie(movieId).title }}
         </router-link>
       </h3>

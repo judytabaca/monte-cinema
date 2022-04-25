@@ -1,20 +1,55 @@
 <template>
   <div class="register-page">
-    <h1 class="register-page__ahoy">Ahoy you!</h1>
-    <h2 class="register-page__care">Care to register?</h2>
+    <template v-if="currentStep === 1">
+      <h1 class="register-page__ahoy">Ahoy you!</h1>
+      <h2 class="register-page__care">Care to register?</h2>
+    </template>
+    <template v-if="currentStep === 2">
+      <h1 class="register-page__ahoy">Great!</h1>
+      <h2 class="register-page__care">Now your name</h2>
+    </template>
 
-    <RegisterCard />
+    <RegisterSteps>
+      <RegisterCard
+        v-if="currentStep === 1"
+        @userCredentials="updateUserCredentials"
+      />
+      <RegisterCardTwo
+        v-if="currentStep === 2"
+        @userDetails="updateUserDetails"
+      />
+    </RegisterSteps>
   </div>
 </template>
 
 <script>
+import RegisterSteps from "@/components/register/RegisterSteps.vue";
 import RegisterCard from "../components/register/RegisterCard.vue";
+import RegisterCardTwo from "../components/register/RegisterCardTwo.vue";
 export default {
+  data() {
+    return {
+      currentStep: 1,
+      userCredentialas: {},
+    };
+  },
+  methods: {
+    updateUserCredentials(payload) {
+      this.userCredentialas = payload;
+      this.currentStep += 1;
+    },
+    updateUserDetails(payload) {
+      this.userCredentialas.firstName = payload.firstName;
+      this.userCredentialas.lastName = payload.lastName;
+      this.userCredentialas.dateOfBirth = payload.dateOfBirth;
+      console.log(this.userCredentialas);
+    },
+  },
   name: "RegisterPage",
   metaInfo: {
     title: "Register",
   },
-  components: { RegisterCard },
+  components: { RegisterCard, RegisterCardTwo, RegisterSteps },
 };
 </script>
 

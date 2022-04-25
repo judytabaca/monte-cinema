@@ -1,16 +1,19 @@
 <template>
-  <div class="day">
-    <button
-      class="day-tabs"
-      v-for="day in daysList"
-      :key="day.id"
-      @click="$emit('selection', day.date)"
-    >
-      {{ day.name }}
-    </button>
-    <button class="day-tabs__calendar">
-      <img src="@/assets/img/calendaricon.svg" alt="calendar-icon" />
-    </button>
+  <div>
+    <label class="day__label">DAY</label>
+    <div class="day">
+      <button
+        class="day-tabs"
+        v-for="day in daysList"
+        :key="day.id"
+        @click="$emit('selection', day.date)"
+      >
+        {{ day.name }}
+      </button>
+      <button class="day-tabs day-tabs--calendar">
+        <img src="@/assets/img/calendaricon.svg" alt="calendar-icon" />
+      </button>
+    </div>
   </div>
 </template>
 
@@ -45,8 +48,21 @@ export default {
 .day {
   display: flex;
 
-  &-tabs,
-  &-tabs__calendar {
+  button:first-of-type {
+    margin-left: 0px;
+  }
+
+  &__label {
+    font-family: "Roboto Mono";
+    color: $bittersweet;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    margin: 16px 0;
+  }
+
+  &-tabs {
     width: 136px;
     height: 56px;
     background: transparent;
@@ -56,12 +72,16 @@ export default {
     text-decoration: none;
     border-radius: 64px;
     transition: background-color 0.4s, border-color 0.2s;
-    margin: 0px 10px;
+    margin: 12px 10px;
     font-family: "Roboto Mono";
     font-style: normal;
     font-weight: 500;
     font-size: 18px;
     line-height: 100%;
+
+    &--calendar {
+      width: 50px;
+    }
 
     &:focus,
     &:active,

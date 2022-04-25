@@ -1,11 +1,15 @@
 <template>
   <div class="seance-card">
     <div class="seance-card__poster">
-      <img :src="matchedMovie(movieId).poster_url" alt="poster" />
+      <router-link :to="{ name: 'MovieDetailsPage', params: { movieId } }">
+        <img :src="matchedMovie(movieId).poster_url" alt="poster" />
+      </router-link>
     </div>
     <div class="seance-card__details">
       <h3>
-        {{ matchedMovie(movieId).title }}
+        <router-link :to="{ name: 'MovieDetailsPage', params: { movieId } }">
+          {{ matchedMovie(movieId).title }}
+        </router-link>
       </h3>
       <div class="seance-card__details__info">
         <span class="seance-card__details__info__genre">
@@ -13,7 +17,6 @@
         </span>
         <span class="seance-card__details__info__time">
           {{ movieLength(matchedMovie(movieId).length) }}
-          min
         </span>
       </div>
       <ul class="seance-card__details__list">
@@ -59,6 +62,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: $tuna;
+}
+
 .seance-card {
   min-width: 90%;
   display: flex;

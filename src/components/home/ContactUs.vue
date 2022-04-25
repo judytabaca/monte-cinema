@@ -2,19 +2,6 @@
   <div class="contact-us">
     <h1>Contact Us</h1>
     <AddressCard />
-    <!-- <div class="contact-us__address">
-      <img src="@/assets/img/pinlocation.svg" alt="location pin icon" />
-      <p>
-        Monterail Sp. z o.o. <br />
-        ul. Oławska 27-29 <br />
-        50-123 Wrocław <br />
-        Poland
-      </p>
-      <img src="@/assets/img/emailicon.svg" alt="email icon" />
-      <p>hello@monterail.com</p>
-      <img src="@/assets/img/phoneicon.svg" alt="phone icon" />
-      <p>+48 533 600 136</p>
-    </div> -->
   </div>
 </template>
 

@@ -29,6 +29,13 @@
         <p :class="{ password_error: !passwordOneDigit && passwordTouched }">
           At least one digit
         </p>
+        <div>
+          You should be minimum 18 years old
+        </div>
+        <div class="privacy-policy">
+          <input type="checkbox">
+          <label>I accept <a href="#">Privacy Policy</a></label>
+        </div>
         <div class="register-card-wrapper__form__buttons">
           <router-link :to="{ name: 'LoginPage' }">
             <MainButton button-type="secondary">Log in instead</MainButton>
@@ -139,6 +146,12 @@ export default {
     0px 1.59602px 5.18708px rgba(0, 0, 0, 0.0161557);
   border-radius: 8px;
   margin-bottom: 40px;
+
+  .privacy-policy {
+    display: flex;
+    gap: 10px;
+    margin-top: 25px;
+  }
 
   .password_error {
     color: rgb(150, 23, 23);

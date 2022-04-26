@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { register } from '@/services/api/apiAuthService'
+
 import RegisterSteps from "@/components/register/RegisterSteps.vue";
 import RegisterCard from "../components/register/RegisterCard.vue";
 import RegisterCardTwo from "../components/register/RegisterCardTwo.vue";
@@ -38,14 +40,15 @@ export default {
       this.userCredentialas = payload;
       this.currentStep += 1;
     },
-    updateUserDetails(payload) {
+    async updateUserDetails(payload) {
       this.userCredentialas = {
         ...this.userCredentialas, 
-        first_name = payload.firstName,
-        last_name = payload.lastName,
-        date_of_birth = payload.dateOfBirth
+        first_name: payload.first_name,
+        last_name: payload.last_name,
+        date_of_birth: payload.date_of_birth
         }
       console.log(this.userCredentialas);
+      await register(this.userCredentialas)
     },
   },
   name: "RegisterPage",

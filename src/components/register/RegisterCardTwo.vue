@@ -22,8 +22,10 @@
           <MainButton button-type="primary" :disabled="!isFormValid"
             >Register</MainButton
           >
-        </div>
-      </div>
+                  </div>
+      <p>You should be minimum 18 years old</p>
+          <input type="checkbox" name="terms-condtions">I accept <a href="#">Privacy Policy</a>
+</div>
     </form>
   </div>
 </template>
@@ -56,9 +58,9 @@ export default {
   methods: {
     submitForm() {
       const userDetails = {
-        firstName: this.firstName,
-        lastName: this.lastName,
-        dateOfBirth: this.dateOfBirth,
+        first_name: this.firstName,
+        last_name: this.lastName,
+        date_of_birth: this.dateOfBirth,
       };
       this.$emit("userDetails", userDetails);
     },

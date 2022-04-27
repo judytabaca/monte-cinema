@@ -3,16 +3,16 @@
     <form @submit.prevent="submitForm" novalidate>
       <div class="register-card-wrapper__form form-field">
         <MainInput v-model="firstName" inputName="first-name" inputType="text"
-          >FIRST NAME</MainInput
+          >Firts name</MainInput
         >
         <MainInput v-model="lastName" inputName="last-name" inputType="text"
-          >LAST NAME</MainInput
+        >Last Name</MainInput
         >
         <MainInput
           v-model="dateOfBirth"
           inputName="date-of-birth"
           inputType="date"
-          >DATE OF BIRTH</MainInput
+          >Date of birth</MainInput
         >
 
         <div class="register-card-wrapper__form__buttons">

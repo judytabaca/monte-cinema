@@ -84,11 +84,10 @@ export default {
     moviesByCategory() {
       if (this.selectedGenre === "") {
         return this.moviesOnTheDay;
-      } else {
-        return this.moviesOnTheDay.filter(
-          (movie) => movie.genre === this.selectedGenre
-        );
-      }
+      } 
+      return this.moviesOnTheDay.filter(
+        (movie) => movie.genre === this.selectedGenre
+      );
     },
     seancesOnTheDay() {
       return this.seancesList.filter(

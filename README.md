@@ -1,6 +1,7 @@
 # monte-cinema
 
 Project developed during Monterail Vue Bootcamp 2022
+Please use Monetecinema API from official repository
 
 ## Project setup
 ```

@@ -1,5 +1,7 @@
 # monte-cinema
 
+Project developed during Monterail Vue Bootcamp 2022
+
 ## Project setup
 ```
 npm install
